@@ -1,5 +1,6 @@
-SignInEmailTextField="xpath://input[@id='user_email']"
-SignInEmailTextField2="id:user_email"
+SignInEmailTextField="id:user_email"
+SignInPasswordTextField="id:user_password"
+SignInButton="name:commit"
 
 def getXpathTextLoginPassword():
     xpath="xpath=//input[@id='user_password']"
@@ -10,3 +11,4 @@ def getXpathButtonSignIn():
 def getXpathProductLogo():
     xpath="xpath=//span[contains(text(),'CDR - SCE')]"
     return xpath
+
