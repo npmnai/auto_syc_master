@@ -1,0 +1,4 @@
+StepType,MainTrack,QCTrack,PreProcessingModules,PreTrack,PostProcessingModules,PostTrack,LockOutputs,LockPrograms
+Single,GLOBALROLE1:GLOBALROLE2:GLOBALROLE3,,GMC_001,,GMC_0102,,,
+Single1,GLOBALROLE1,,GMC_001,,GMC_0102,,,
+Single2,GLOBALROLE1,,GMC_001,,GMC_0102,,,
