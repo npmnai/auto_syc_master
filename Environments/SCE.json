@@ -1,0 +1,14 @@
+{
+  "Syracuse":
+  {
+    "AppURL": "https://cdrsce-syracuse-staging.sycamoreinformatics.com/",
+    "Email": "internalqa@sycamoreinformatics.com",
+    "Password": "Password@5"
+  },
+  "Test1":
+  {
+    "AppURL": "U1",
+    "Email": "E1",
+    "Password": "P1"
+  }
+}
