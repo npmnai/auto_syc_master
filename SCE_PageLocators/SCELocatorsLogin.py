@@ -1,6 +1,7 @@
 SignInEmailTextField="id:user_email"
 SignInPasswordTextField="id:user_password"
 SignInButton="name:commit"
+LogoutLink="xpath://a[@title='Logout']"
 
 def getXpathTextLoginPassword():
     xpath="xpath=//input[@id='user_password']"

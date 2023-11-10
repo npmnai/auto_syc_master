@@ -4,9 +4,10 @@ Resource  ../Resources/Imports.robot
 *** Variables ***
 
 *** Test Cases ***
-Add New Workflow Step Single
+Add New Application Group Role
     InitializeTestCase
     Launch SCE Application
     Login to SCE Application
     Promote User Session Role
-    Create A Step With Type Single
+    ${AppGrpRoleName}=  Add New App Group Role
+    Search App Group Roles    ${AppGrpRoleName}

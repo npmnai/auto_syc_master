@@ -1,9 +1,9 @@
 {
-  "Syracuse":
+  "Syracuse-Staging":
   {
-    "AppURL": "https://cdrsce-syracuse-staging.sycamoreinformatics.com/",
+    "AppURL": "https://cdrsce-syracuse-staging.sycamoreinformatics.com/users/sign_in",
     "Email": "internalqa@sycamoreinformatics.com",
-    "Password": "Password@5"
+    "Password": "Password@6"
   },
   "Test1":
   {

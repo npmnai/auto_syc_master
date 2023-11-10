@@ -4,9 +4,10 @@ Resource  ../Resources/Imports.robot
 *** Variables ***
 
 *** Test Cases ***
-Add New Workflow Step Single
+Login and logout of CDR-SCE application
     InitializeTestCase
     Launch SCE Application
     Login to SCE Application
     Promote User Session Role
-    Create A Step With Type Single
+    Demote User Session Role
+    Logout of SCE Application

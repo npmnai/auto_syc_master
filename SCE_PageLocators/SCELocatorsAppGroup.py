@@ -1,0 +1,8 @@
+SearchAppGrp="xpath://div[@class='search-filter--container']//input[@placeholder='Search']"
+AddNewAppGrp="xpath://button/i[@class='fa fa-plus']"
+AppGrpName="id:name"
+AppGrpDesc="id:description"
+UsersSearch="xpath://div[@class='rdl-filter-container']/input[@data-key='available']"
+MoveAllRightButton="xpath://div[@class='rdl-actions-right']/descendant::button[contains(@class, 'rdl-move-all')]"
+SaveButton="xpath://button[contains(text(),'Save')]"
+SearchedAppGrp="xpath://span[contains(text(),'index')]"
