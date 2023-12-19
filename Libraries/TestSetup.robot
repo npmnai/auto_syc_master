@@ -2,6 +2,9 @@
 Resource    ../Resources/Imports.robot
 
 *** Variables ***
+${GMAIL_ACCOUNT}        #   Sender Email Address
+${GMAIL_PASSWORD}       #   App Password
+${RECIPIENT_ADDRESS}    #   Recipient Email Address
 
 *** Keywords ***
 SetUpDirVar
@@ -60,4 +63,15 @@ SetUpEnvVar1
     ${login_email}=  Set Variable  ${login_email_arr[0]}
     Log To Console    Email = ${login_email}
 
-
+SendEmail
+    Authorize   account=${GMAIL_ACCOUNT}    password=${GMAIL_PASSWORD}
+    ${TIMESTAMP}=    Get Current Date    result_format=%d-%m-%y_%H-%M
+    #${REPORT_FILE_NAME}=    Set Variable    ${RESULT_DIR}\\${TIMESTAMP}.html
+    Copy File    ${RESULT_DIR}\\report.html    ${RESULT_DIR}\\${TIMESTAMP}.html
+    ${ATTACHMENT}=  Set Variable    ${RESULT_DIR}\\${TIMESTAMP}.html
+    Send Message    sender=${GMAIL_ACCOUNT}
+    ...             recipients=${RECIPIENT_ADDRESS}
+    ...             subject=Message
+    ...             body=Hello
+    ...             attachments=${ATTACHMENT}
+    Remove File    ${RESULT_DIR}\\${TIMESTAMP}.html
