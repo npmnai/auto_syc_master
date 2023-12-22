@@ -7,7 +7,6 @@ Variables  ../SCE_PageLocators/SCELocatorsStudies.py
 
 *** Keywords ***
 Create New Folder
-#    [Arguments]     ${StudyData}
     Wait Until Element Is Visible    ${RootFolders}
     Click Element    ${RootFolders}
     Sleep    2
@@ -16,7 +15,7 @@ Create New Folder
     Wait Until Element Is Visible    ${NewFolder}
     Click Element    ${NewFolder}
     Wait Until Element Is Visible    ${FolderNameInput}
-    Input Text    ${FolderNameInput}    ${StudyData}_folder
+    Input Text    ${FolderNameInput}    ${StudyData}_FOLDER
     Wait Until Element Is Visible    ${FolderTypeButton}
     Click Element    ${FolderTypeButton}
     Wait Until Element Is Visible    ${SelectSearch}
