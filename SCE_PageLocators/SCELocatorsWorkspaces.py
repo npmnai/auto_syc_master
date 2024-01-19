@@ -1,0 +1,5 @@
+NewWorkspace = "xpath://span[@class='add-workspace']//i[@class='fa fa-plus']"
+WorkspaceNameInput = "id:study_name"
+CreateWorkspace = "xpath://input[@name='commit']"
+WorkspaceConfirmation = "xpath://span[contains(text(),'Your workspace creation request has been initiated.')]"
+WorkspaceInList = "xpath://a[contains(@title,'wks1')]"
