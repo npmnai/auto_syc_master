@@ -67,6 +67,7 @@ Create New Study
     Click Element    ${NewStudy}
     @{list} =    Get Name And Desc      study
     ${StudyData} =  Set Variable    ${list}[0]
+    Set Suite Variable    ${StudyData}
     Wait Until Element Is Visible    ${StudyNumber}
     Input Text    ${StudyNumber}    ${StudyData}
     Sleep    2
@@ -319,3 +320,35 @@ Convert Files to CSV
     Sleep    5
     Wait Until Element Is Visible    ${StudyIDColumn}
     Wait Until Element Is Visible    ${RowCheckXpt}
+
+
+Upload Programs to Study for Dependency Check
+    Wait Until Element Is Visible    ${ProgramsFolder}
+    Click Element    ${ProgramsFolder}
+    Sleep    2
+    Wait Until Element Is Visible    ${Upload}
+    Click Element    ${Upload}
+    Sleep    2
+    Wait Until Element Is Visible    ${UploadFile}
+    Input Text    ${UploadFile}    ${TEST_DATA_DIR}\\dm_sas7bdat_prog.sas
+    Sleep    10
+    Click Element    ${Upload}
+    Sleep    2
+    Wait Until Element Is Visible    ${UploadFile}
+    Input Text    ${UploadFile}    ${TEST_DATA_DIR}\\dm_sas7bdat_prog_nocomments.sas
+    Sleep    10
+    Wait Until Element Is Visible    ${DataFolder}
+    Click Element    ${DataFolder}
+    Sleep    2
+    Wait Until Element Is Visible    ${Upload}
+    Click Element    ${Upload}
+    Sleep    2
+    Wait Until Element Is Visible    ${UploadFile}
+    Input Text    ${UploadFile}    ${TEST_DATA_DIR}\\raw_dm.sas7bdat
+    Sleep    10
+    Wait Until Element Is Visible    ${Upload}
+    Click Element    ${Upload}
+    Sleep    2
+    Wait Until Element Is Visible    ${UploadFile}
+    Input Text    ${UploadFile}    ${TEST_DATA_DIR}\\input.txt
+    Sleep    10
