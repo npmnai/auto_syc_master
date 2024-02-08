@@ -157,3 +157,63 @@ Compute Explicit Dependencies
     Wait Until Element Is Visible    ${DependenciesCloseButton}
     Click Element    ${DependenciesCloseButton}
     Sleep    3
+
+Compute Dependencies
+    Wait Until Element Is Visible    ${Workspaces}
+    Click Element    ${Workspaces}
+    Sleep    3
+    Wait Until Element Is Visible    ${WorkspaceSearch}
+    Click Element    ${WorkspaceSearch}
+    Sleep    3
+    Press Keys    None    TAB
+    Sleep    3
+    Press Keys    None    ENTER
+    Sleep    5
+    Wait Until Element Is Visible    ${RootFolders}
+    Click Element    ${RootFolders}
+    Sleep    3
+    Wait Until Element Is Visible    ${ProgramsFolder}
+    Click Element    ${ProgramsFolder}
+    Sleep    3
+    Wait Until Element Is Visible    ${SasProgAlt}
+    Click Element    ${SasProgAlt}
+    Sleep    5
+    Wait Until Element Is Visible    ${DetectDependencies}
+    Click Element    ${DetectDependencies}
+    Wait Until Element Is Visible    ${DependenciesSuccess}     timeout=30
+    Sleep    3
+    Wait Until Element Is Visible    ${DependenciesCloseButton}
+    Click Element    ${DependenciesCloseButton}
+    Sleep    3
+
+Download File and Check
+    Wait Until Element Is Visible    ${Workspaces}
+    Click Element    ${Workspaces}
+    Sleep    3
+    Wait Until Element Is Visible    ${WorkspaceSearch}
+    Click Element    ${WorkspaceSearch}
+    Sleep    3
+    Press Keys    None    TAB
+    Sleep    3
+    Press Keys    None    ENTER
+    Sleep    5
+    Wait Until Element Is Visible    ${RootFolders}
+    Click Element    ${RootFolders}
+    Sleep    3
+    Wait Until Element Is Visible    ${ProgramsFolder}
+    Click Element    ${ProgramsFolder}
+    Sleep    3
+    Wait Until Element Is Visible    ${Upload}
+    Click Element    ${Upload}
+    Sleep    3
+    Wait Until Element Is Visible    ${UploadFile}
+    Input Text    ${UploadFile}    ${TEST_DATA_DIR}\\dm_sas7bdat_prog.sas
+    Sleep    15
+    Wait Until Element Is Visible    ${SasProg}
+    Click Element    ${SasProg}
+    Sleep    5
+    Wait Until Element Is Visible    ${DownloadInWorkspace}
+    Click Element    ${DownloadInWorkspace}
+    Sleep    10
+    ${file_name}=    Set Variable    C:\\Users\\siddh\\Downloads\\dm_sas7bdat_prog.sas
+    Run Keyword If   ${{os.path.exists($file_name)}} is False    Fail        File does not exist

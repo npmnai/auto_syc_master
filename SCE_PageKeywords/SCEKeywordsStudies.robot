@@ -1,11 +1,13 @@
 *** Settings ***
 Library  SeleniumLibrary
 Library    ../Libraries/Common.py
+Library    String
 Variables  ../SCE_PageLocators/SCELocatorsDashboard.py
 Variables  ../SCE_PageLocators/SCELocatorsNewStudy.py
 Variables  ../SCE_PageLocators/SCELocatorsStudies.py
 Variables  ../SCE_PageLocators/SCELocatorsUserAccess.py
 Variables  ../SCE_PageLocators/SCELocatorsAppFolders.py
+Variables  ../SCE_PageLocators/SCE_LocatorsDownloads.py
 
 *** Keywords ***
 Create New Study Template
@@ -352,3 +354,127 @@ Upload Programs to Study for Dependency Check
     Wait Until Element Is Visible    ${UploadFile}
     Input Text    ${UploadFile}    ${TEST_DATA_DIR}\\input.txt
     Sleep    10
+
+Download Folder and Check
+    Wait Until Element Is Visible    ${ProgramsFolder}
+    Click Element    ${ProgramsFolder}
+    Sleep    3
+    Wait Until Element Is Visible    ${Upload}
+    Click Element    ${Upload}
+    Sleep    3
+    Wait Until Element Is Visible    ${UploadFile}
+    Input Text    ${UploadFile}    ${TEST_DATA_DIR}\\dm_sas7bdat_prog.sas
+    Sleep    15
+    Wait Until Element Is Visible    ${DownloadInStudy}
+    Click Element    ${DownloadInStudy}
+    Sleep    3
+    ${modLoadingDownload}=    Replace String  ${LoadingDownload}  xyz  ${StudyData}
+    Wait Until Element Is Visible    ${modLoadingDownload}
+    Sleep    30
+    Reload Page
+    Sleep    3
+    ${modReadyToDownload}=    Replace String  ${ReadyToDownload}  xyz  ${StudyData}
+    Wait Until Element Is Visible    ${modReadyToDownload}
+    ${file_name}=       Get Text    ${FirstFileName}
+    Wait Until Element Is Visible    ${FirstDownloadButton}
+    Click Element    ${FirstDownloadButton}
+    Sleep    10
+    ${file_path}=    Set Variable    C:\\Users\\siddh\\Downloads\\${file_name}
+    Run Keyword If   ${{os.path.exists($file_path)}} is False    Fail        File does not exist
+
+Upload and Unzip
+    Wait Until Element Is Visible    ${ProgramsFolder}
+    Click Element    ${ProgramsFolder}
+    Sleep    3
+    Wait Until Element Is Visible    ${Upload}
+    Click Element    ${Upload}
+    Sleep    3
+    Wait Until Element Is Visible    ${UploadFile}
+    Input Text    ${UploadFile}    ${TEST_DATA_DIR}\\TestData.zip
+    Sleep    15
+    Wait Until Element Is Visible    ${ThirdThreeBars}
+    Click Element    ${ThirdThreeBars}
+    Sleep    3
+    Wait Until Element Is Visible    ${ThreeBarsUnzip}
+    Click Element    ${ThreeBarsUnzip}
+    Sleep    3
+    Wait Until Element Is Visible    ${UnzipInitiatedPrompt}        timeout=30
+    Wait Until Element Is Not Visible    ${UnzipInitiatedPrompt}        timeout=30
+    Wait Until Element Is Visible    ${UnzipFinishedPrompt}     timeout=30
+    Wait Until Element Is Not Visible    ${UnzipFinishedPrompt}     timeout=30
+    Wait Until Element Is Visible    ${SasProg}     timeout=30
+    Wait Until Element Is Visible    ${RubyProg}        timeout=30
+
+Copy File From Programs to Data
+    Wait Until Element Is Visible    ${ProgramsFolder}
+    Click Element    ${ProgramsFolder}
+    Sleep    3
+    Wait Until Element Is Visible    ${Upload}
+    Click Element    ${Upload}
+    Sleep    3
+    Wait Until Element Is Visible    ${UploadFile}
+    Input Text    ${UploadFile}    ${TEST_DATA_DIR}\\dm_sas7bdat_prog.sas
+    Sleep    15
+    Wait Until Element Is Visible    ${SelectFirstFile}
+    Click Element    ${SelectFirstFile}
+    Sleep    3
+    Wait Until Element Is Visible    ${AddToClipboardButton}
+    Click Element    ${AddToClipboardButton}
+    Sleep    3
+    Wait Until Element Is Visible    ${AddedToClipboardPrompt}      timeout=30
+    Wait Until Element Is Not Visible    ${AddedToClipboardPrompt}      timeout=30
+    Wait Until Element Is Visible    ${DataFolder}
+    Click Element    ${DataFolder}
+    Sleep    3
+    Wait Until Element Is Visible    ${Clipboard}
+    Click Element    ${Clipboard}
+    Sleep    3
+    Wait Until Element Is Visible    ${SelectAllClipboard}
+    Click Element    ${SelectAllClipboard}
+    Sleep    3
+    Wait Until Element Is Visible    ${PasteHere}
+    Click Element    ${PasteHere}
+    Sleep    5
+    Wait Until Element Is Visible    ${Clipboard}
+    Click Element    ${Clipboard}
+    Sleep    10
+    Wait Until Element Is Visible    ${SasProg}
+
+Move File From Programs to Results
+    Wait Until Element Is Visible    ${ProgramsFolder}
+    Click Element    ${ProgramsFolder}
+    Sleep    3
+    Wait Until Element Is Visible    ${Upload}
+    Click Element    ${Upload}
+    Sleep    3
+    Wait Until Element Is Visible    ${UploadFile}
+    Input Text    ${UploadFile}    ${TEST_DATA_DIR}\\dm_sas7bdat_prog.sas
+    Sleep    15
+    Wait Until Element Is Visible    ${SelectFirstFile}
+    Click Element    ${SelectFirstFile}
+    Sleep    3
+    Wait Until Element Is Visible    ${AddToClipboardButton}
+    Click Element    ${AddToClipboardButton}
+    Sleep    3
+    Wait Until Element Is Visible    ${AddedToClipboardPrompt}      timeout=30
+    Wait Until Element Is Not Visible    ${AddedToClipboardPrompt}      timeout=30
+    Wait Until Element Is Visible    ${ResultsFolder}
+    Click Element    ${ResultsFolder}
+    Sleep    3
+    Wait Until Element Is Visible    ${Clipboard}
+    Click Element    ${Clipboard}
+    Sleep    3
+    Wait Until Element Is Visible    ${SelectAllClipboard}
+    Click Element    ${SelectAllClipboard}
+    Sleep    3
+    Wait Until Element Is Visible    ${MoveHere}
+    Click Element    ${MoveHere}
+    Sleep    3
+    Handle Alert
+    Sleep    10
+    Wait Until Element Is Visible    ${SasProg}
+    Sleep    3
+    Wait Until Element Is Visible    ${ProgramsFolder}
+    Click Element    ${ProgramsFolder}
+    Sleep    3
+    Element Should Not Be Visible    ${SasProg}
