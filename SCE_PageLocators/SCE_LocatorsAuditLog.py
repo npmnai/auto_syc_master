@@ -1,0 +1,6 @@
+StudyCreateInLog = "xpath://span[normalize-space()='Study Create']"
+FileCreateInLog = "xpath://span[normalize-space()='User File Create']"
+ExitLog = "xpath://a[text()='xyz']"
+ExportFormatSelect = "xpath://select[@title='Select a Format']"
+ExportLog = "xpath://button[@title='Download']"
+DownloadsPrompt = "xpath://a[@title='Downloads']"

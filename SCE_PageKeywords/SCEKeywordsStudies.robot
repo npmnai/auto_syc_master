@@ -86,6 +86,10 @@ Create New Study
     Click Element    ${CreateStudy}
     Sleep    2
     Wait Until Element Is Visible    ${StudyConfirmed}
+    Sleep    3
+    Wait Until Element Is Visible    ${RootFolders}
+    Click Element    ${RootFolders}
+    Sleep    3
 
 Assign User
     Wait Until Element Is Visible    ${AccessButton}
@@ -478,3 +482,44 @@ Move File From Programs to Results
     Click Element    ${ProgramsFolder}
     Sleep    3
     Element Should Not Be Visible    ${SasProg}
+
+Upload Single File to Study
+    Wait Until Element Is Visible    ${Upload}
+    Click Element    ${Upload}
+    Sleep    3
+    Wait Until Element Is Visible    ${UploadFile}
+    Input Text    ${UploadFile}    ${TEST_DATA_DIR}\\dm_sas7bdat_prog.sas
+    Sleep    15
+
+Upload and Run a Single Program
+    Wait Until Element Is Visible    ${ProgramsFolder}
+    Click Element    ${ProgramsFolder}
+    Sleep    2
+    Wait Until Element Is Visible    ${Upload}
+    Click Element    ${Upload}
+    Sleep    2
+    Wait Until Element Is Visible    ${UploadFile}
+    Input Text    ${UploadFile}    ${TEST_DATA_DIR}\\file_copier.rb
+    Sleep    10
+    Wait Until Element Is Visible    ${DataFolder}
+    Click Element    ${DataFolder}
+    Sleep    2
+    Wait Until Element Is Visible    ${Upload}
+    Click Element    ${Upload}
+    Sleep    2
+    Wait Until Element Is Visible    ${UploadFile}
+    Input Text    ${UploadFile}    ${TEST_DATA_DIR}\\input.txt
+    Sleep    10
+    Wait Until Element Is Visible    ${ProgramsFolder}
+    Click Element    ${ProgramsFolder}
+    Sleep    2
+    Wait Until Element Is Visible    ${FileThreeBars}
+    Click Element    ${FileThreeBars}
+    Sleep    5
+    Wait Until Element Is Visible    ${ThreeBarsRun}
+    Click Element    ${ThreeBarsRun}
+    Sleep    30
+    Wait Until Element Is Visible    ${ResultsFolder}
+    Click Element    ${ResultsFolder}
+    Sleep    2
+    Wait Until Element Is Visible    ${RubyROutput}     timeout=30
