@@ -499,6 +499,7 @@ Upload and Run a Single Program
     Wait Until Element Is Visible    ${RubyROutput}     timeout=30
 
 Upload and Create Special Character Files
+    Unzip File    ${TEST_DATA_DIR}\\SpecialCharFiles.zip    ${TEST_DATA_DIR}
     Wait Until Element Is Visible    ${DataFolder}
     Click Element    ${DataFolder}
     Sleep    2
@@ -548,6 +549,7 @@ Upload and Create Special Character Files
     Wait Until Element Is Visible    ${RenamedSpecialCharFileVerify}     timeout=30
 
 Upload and Run Special Character Program
+    Unzip File    ${TEST_DATA_DIR}\\SpecialCharFiles.zip    ${TEST_DATA_DIR}
     Wait Until Element Is Visible    ${DataFolder}
     Click Element    ${DataFolder}
     Sleep    2
@@ -591,6 +593,7 @@ Upload and Run Special Character Program
     Sleep    2
 
 Upload and Copy and Move Special Character File
+    Unzip File    ${TEST_DATA_DIR}\\SpecialCharFiles.zip    ${TEST_DATA_DIR}
     Wait Until Element Is Visible    ${DataFolder}
     Click Element    ${DataFolder}
     Sleep    2
@@ -646,6 +649,7 @@ Upload and Copy and Move Special Character File
     Element Should Not Be Visible    ${SpecialCharFileVerify}
 
 Upload all Special Char Files
+    Unzip File    ${TEST_DATA_DIR}\\SpecialCharFiles.zip    ${TEST_DATA_DIR}
     Wait Until Element Is Visible    ${DataFolder}
     Click Element    ${DataFolder}
     Sleep    2

@@ -6,6 +6,7 @@ import json
 import numpy as np
 import pandas as pd
 import os
+import zipfile
 
 
 def defineEnvironmentVariablesFromJsonFile(prod,env):
@@ -101,3 +102,8 @@ def get_name_and_desc(mod):
     print(name)
     print(desc)
     return [name,desc]
+
+def unzip_file(source, dest):
+    with zipfile.ZipFile(source, 'r') as zip_ref:
+        zip_ref.extractall(dest)
+        
