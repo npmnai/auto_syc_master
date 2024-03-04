@@ -18,6 +18,7 @@ Resource   ../SCE_PageKeywords/SCEKeywordsAppGroupRoles.robot
 Resource   ../SCE_PageKeywords/SCEKeywordsWorkflowSteps.robot
 Resource   ../SCE_PageKeywords/SCEKeywordsAppFolders.robot
 Resource   ../SCE_PageKeywords/SCEKeywordsStudies.robot
+Resource   ../SCE_PageKeywords/SCEKeywordsUserAccess.robot
 Resource   ../SCE_PageKeywords/SCEKeywordsWorkspaces.robot
 Resource   ../SCE_PageKeywords/SCEKeywordsAuditLog.robot
 Resource   ../SCE_PageKeywords/SCEKeywordsGlobalRoles.robot

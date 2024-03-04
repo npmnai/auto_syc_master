@@ -1,3 +1,4 @@
 WaiverRoleNameArg: test
 StepNameArg: auto
 WorkflowNameArg: auto
+GlobalRoleNameArg: auto

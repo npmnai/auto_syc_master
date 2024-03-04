@@ -91,32 +91,6 @@ Create New Study
     Click Element    ${RootFolders}
     Sleep    3
 
-Assign User
-    Wait Until Element Is Visible    ${AccessButton}
-    Click Element    ${AccessButton}
-    Wait Until Element Is Visible    ${UserSearchInput}
-    Click Element    ${UserSearchInput}
-    Wait Until Element Is Visible    ${UserSearchInput}
-    Input Text    ${UserSearchInput}    Internal QA
-    Wait Until Element Is Visible    ${FirstUserChoice}
-    Click Element    ${FirstUserChoice}
-    Sleep    2
-    Wait Until Element Is Visible    ${UserSearchClose}
-    Click Element    ${UserSearchClose}
-    Wait Until Element Is Visible    ${RoleSelect}
-    Click Element    ${RoleSelect}
-    Sleep    2
-    Wait Until Element Is Visible    ${RoleInput}
-    Input Text    ${RoleInput}    test\n
-    Sleep    2
-    Wait Until Element Is Visible    ${AssignButton}
-    Click Element    ${AssignButton}
-    Sleep    2
-    Wait Until Element Is Visible    ${AssignYes}
-    Click Element    ${AssignYes}
-    Wait Until Element Is Visible    ${AssignmentConfirm}
-    Sleep    2
-
 Upload Programs to Study
     Wait Until Element Is Visible    ${ProgramsFolder}
     Click Element    ${ProgramsFolder}
@@ -523,3 +497,370 @@ Upload and Run a Single Program
     Click Element    ${ResultsFolder}
     Sleep    2
     Wait Until Element Is Visible    ${RubyROutput}     timeout=30
+
+Upload and Create Special Character Files
+    Wait Until Element Is Visible    ${DataFolder}
+    Click Element    ${DataFolder}
+    Sleep    2
+    Wait Until Element Is Visible    ${Upload}
+    Click Element    ${Upload}
+    Sleep    2
+    Wait Until Element Is Visible    ${UploadFile}
+    Input Text    ${UploadFile}    ${TEST_DATA_DIR}\\input.txt
+    Sleep    10
+    Wait Until Element Is Visible    ${Upload}
+    Click Element    ${Upload}
+    Sleep    2
+    Wait Until Element Is Visible    ${UploadFile}
+    Input Text    ${UploadFile}    ${TEST_DATA_DIR}\\Test~ @ # $ % ^ + = { } [ ] ; ,.txt
+    Sleep    10
+    Wait Until Element Is Visible    ${SpecialCharFileVerify}     timeout=30
+    Wait Until Element Is Visible    ${New}
+    Click Element    ${New}
+    Sleep    2
+    Wait Until Element Is Visible    ${CreateNewFile}
+    Click Element    ${CreateNewFile}
+    Sleep    3
+    Wait Until Element Is Visible    ${SaveFileButton}
+    Click Element    ${SaveFileButton}
+    Sleep    3
+    Wait Until Element Is Visible    ${InputFileName}
+    Click Element    ${InputFileName}
+    Sleep    1
+    Input Text    ${InputFileName}      test2Test~ @ # $ % ^ + = { } [ ] ; ,.txt
+    Sleep    2
+    Wait Until Element Is Visible    ${CreateFileButton}
+    Click Element    ${CreateFileButton}
+    Sleep    3
+    Wait Until Element Is Visible    ${DataFolder}
+    Click Element    ${DataFolder}
+    Sleep    2
+    Wait Until Element Is Visible    ${NewSpecialCharFileVerify}     timeout=30
+    Wait Until Element Is Visible    ${FileThreeBars}
+    Click Element    ${FileThreeBars}
+    Sleep    3
+    Wait Until Element Is Visible    ${ThreeBarsRename}
+    Click Element    ${ThreeBarsRename}
+    Sleep    3
+    Wait Until Element Is Visible    ${RenameInput}
+    Input Text    ${RenameInput}    Test {Space ~ @ # $ % ^ + = { } [ ] ; ,.txt\n
+    Sleep    2
+    Wait Until Element Is Visible    ${RenamedSpecialCharFileVerify}     timeout=30
+
+Upload and Run Special Character Program
+    Wait Until Element Is Visible    ${DataFolder}
+    Click Element    ${DataFolder}
+    Sleep    2
+    Wait Until Element Is Visible    ${Upload}
+    Click Element    ${Upload}
+    Sleep    2
+    Wait Until Element Is Visible    ${UploadFile}
+    Input Text    ${UploadFile}    ${TEST_DATA_DIR}\\input!@#().txt
+    Sleep    10
+    Wait Until Element Is Visible    ${SpecialCharProgInputVerify}     timeout=30
+    Wait Until Element Is Visible    ${ProgramsFolder}
+    Click Element    ${ProgramsFolder}
+    Sleep    2
+    Wait Until Element Is Visible    ${Upload}
+    Click Element    ${Upload}
+    Sleep    2
+    Wait Until Element Is Visible    ${UploadFile}
+    Input Text    ${UploadFile}    ${TEST_DATA_DIR}\\rubyprogram!@#().rb
+    Sleep    10
+    Wait Until Element Is Visible    ${SpecialCharProgVerify}     timeout=30
+    Wait Until Element Is Visible    ${FileThreeBars}
+    Click Element    ${FileThreeBars}
+    Sleep    3
+    Wait Until Element Is Visible    ${ThreeBarsRun}
+    Click Element    ${ThreeBarsRun}
+    Sleep    30
+    Wait Until Element Is Visible    ${SpecialCharProgOutputVerify}     timeout=30
+    Wait Until Element Is Visible    ${SecondThreeBars}
+    Click Element    ${SecondThreeBars}
+    Sleep    3
+    Wait Until Element Is Visible    ${ThreeBarsHistory}
+    Click Element    ${ThreeBarsHistory}
+    Sleep    5
+    Wait Until Element Is Visible    ${SpecialCharProgVerify}
+    Click Element    ${SpecialCharProgVerify}
+    Wait Until Element Is Visible    ${OutputFileInReportVerify}        timeout=30
+    Sleep    2
+    Wait Until Element Is Visible    ${TraceabilityReportButton}
+    Click Element    ${TraceabilityReportButton}
+    Wait Until Element Is Visible    ${OutputFileInReportVerify}        timeout=30
+    Sleep    2
+
+Upload and Copy and Move Special Character File
+    Wait Until Element Is Visible    ${DataFolder}
+    Click Element    ${DataFolder}
+    Sleep    2
+    Wait Until Element Is Visible    ${Upload}
+    Click Element    ${Upload}
+    Sleep    2
+    Wait Until Element Is Visible    ${UploadFile}
+    Input Text    ${UploadFile}    ${TEST_DATA_DIR}\\Test~ @ # $ % ^ + = { } [ ] ; ,.txt
+    Sleep    10
+    Wait Until Element Is Visible    ${SpecialCharFileVerify}     timeout=30
+    Wait Until Element Is Visible    ${SelectFirstFile}
+    Click Element    ${SelectFirstFile}
+    Sleep    3
+    Wait Until Element Is Visible    ${AddToClipboardButton}
+    Click Element    ${AddToClipboardButton}
+    Sleep    3
+    Wait Until Element Is Visible    ${AddedToClipboardPrompt}      timeout=30
+    Wait Until Element Is Not Visible    ${AddedToClipboardPrompt}      timeout=30
+    Wait Until Element Is Visible    ${ResultsFolder}
+    Click Element    ${ResultsFolder}
+    Sleep    3
+    Wait Until Element Is Visible    ${Clipboard}
+    Click Element    ${Clipboard}
+    Sleep    3
+    Wait Until Element Is Visible    ${SelectAllClipboard}
+    Click Element    ${SelectAllClipboard}
+    Sleep    3
+    Wait Until Element Is Visible    ${PasteHere}
+    Click Element    ${PasteHere}
+    Sleep    5
+    Wait Until Element Is Visible    ${Clipboard}
+    Click Element    ${Clipboard}
+    Sleep    10
+    Wait Until Element Is Visible    ${SpecialCharFileVerify}     timeout=30
+    Wait Until Element Is Visible    ${DocumentsFolder}
+    Click Element    ${DocumentsFolder}
+    Sleep    3
+    Wait Until Element Is Visible    ${Clipboard}
+    Click Element    ${Clipboard}
+    Sleep    3
+    Wait Until Element Is Visible    ${SelectAllClipboard}
+    Click Element    ${SelectAllClipboard}
+    Sleep    3
+    Wait Until Element Is Visible    ${MoveHere}
+    Click Element    ${MoveHere}
+    Sleep    3
+    Handle Alert
+    Sleep    10
+    Wait Until Element Is Visible    ${SpecialCharFileVerify}     timeout=30
+    Wait Until Element Is Visible    ${DataFolder}
+    Click Element    ${DataFolder}
+    Sleep    2
+    Element Should Not Be Visible    ${SpecialCharFileVerify}
+
+Upload all Special Char Files
+    Wait Until Element Is Visible    ${DataFolder}
+    Click Element    ${DataFolder}
+    Sleep    2
+    Wait Until Element Is Visible    ${Upload}
+    Click Element    ${Upload}
+    Sleep    2
+    Wait Until Element Is Visible    ${UploadFile}
+    Input Text    ${UploadFile}    ${TEST_DATA_DIR}\\Test~ @ # $ % ^ + = { } [ ] ; ,.txt
+    Sleep    10
+    Wait Until Element Is Visible    ${SpecialCharFileVerify}     timeout=30
+    Wait Until Element Is Visible    ${New}
+    Click Element    ${New}
+    Sleep    2
+    Wait Until Element Is Visible    ${CreateNewFile}
+    Click Element    ${CreateNewFile}
+    Sleep    3
+    Wait Until Element Is Visible    ${SaveFileButton}
+    Click Element    ${SaveFileButton}
+    Sleep    3
+    Wait Until Element Is Visible    ${InputFileName}
+    Click Element    ${InputFileName}
+    Sleep    1
+    Input Text    ${InputFileName}      test2Test~ @ # $ % ^ + = { } [ ] ; ,.txt
+    Sleep    2
+    Wait Until Element Is Visible    ${CreateFileButton}
+    Click Element    ${CreateFileButton}
+    Sleep    3
+    Wait Until Element Is Visible    ${DataFolder}
+    Click Element    ${DataFolder}
+    Sleep    2
+    Wait Until Element Is Visible    ${NewSpecialCharFileVerify}     timeout=30
+
+Create Batch and Add Programs
+    Wait Until Element Is Visible    ${ProgramsFolder}
+    Click Element    ${ProgramsFolder}
+    Sleep    3
+    Wait Until Element Is Visible    ${ManageButton}
+    Click Element    ${ManageButton}
+    Sleep    3
+    Wait Until Element Is Visible    ${BatchesButton}
+    Click Element    ${BatchesButton}
+    Sleep    3
+    Wait Until Element Is Visible    ${CreateBatchButton}
+    Click Element    ${CreateBatchButton}
+    Sleep    3
+    Wait Until Element Is Visible    ${InputBatchName}
+    Click Element    ${InputBatchName}
+    Sleep    1
+    Input Text    ${InputBatchName}    batch1
+    Sleep    2
+    ${PythonProgInList}=    Replace String  ${ProgInList}  xyz  pythonSecureExecution.py
+    ${RubyProgInList}=    Replace String  ${ProgInList}  xyz  file_copier.rb
+    ${RProgInList}=    Replace String  ${ProgInList}  xyz  R.r
+    ${SasProgInList}=    Replace String  ${ProgInList}  xyz  dm_sas7bdat_prog.sas
+#    Wait Until Element Is Visible    ${BatchProgramSelect}
+#    Click Element    ${BatchProgramSelect}
+#    Sleep    2
+#    Wait Until Element Is Visible    ${PythonProgInList}
+#    Click Element    ${PythonProgInList}
+#    Sleep    2
+    Wait Until Element Is Visible    ${BatchProgramSelect}
+    Click Element    ${BatchProgramSelect}
+    Sleep    2
+    Wait Until Element Is Visible    ${RubyProgInList}
+    Click Element    ${RubyProgInList}
+    Sleep    2
+    Wait Until Element Is Visible    ${BatchProgramSelect}
+    Click Element    ${BatchProgramSelect}
+    Sleep    2
+    Wait Until Element Is Visible    ${RProgInList}
+    Click Element    ${RProgInList}
+    Sleep    2
+#    Wait Until Element Is Visible    ${BatchProgramSelect}
+#    Click Element    ${BatchProgramSelect}
+#    Sleep    2
+#    Wait Until Element Is Visible    ${SasProgInList}
+#    Click Element    ${SasProgInList}
+#    Sleep    2
+
+    Wait Until Element Is Visible    ${ConfirmCreateBatch}
+    Click Element    ${ConfirmCreateBatch}
+    Wait Until Element Is Visible    ${BatchConfirmationPrompt}     timeout=30
+    Sleep    3
+
+#    ${PythonProgInBatch}=    Replace String  ${ProgInBatch}  xyz  pythonSecureExecution.py
+    ${RubyProgInBatch}=    Replace String  ${ProgInBatch}  xyz  file_copier.rb
+    ${RProgInBatch}=    Replace String  ${ProgInBatch}  xyz  R.r
+#    ${SasProgInBatch}=    Replace String  ${ProgInBatch}  xyz  dm_sas7bdat_prog.sas
+#    Element Should Be Visible    ${PythonProgInBatch}
+    Element Should Be Visible    ${RubyProgInBatch}
+    Element Should Be Visible    ${RProgInBatch}
+#    Element Should Be Visible    ${SasProgInBatch}
+    Sleep    3
+
+#    Wait Until Element Is Visible    ${BatchProgramSelect}
+#    Click Element    ${BatchProgramSelect}
+#    Sleep    2
+#    Press Keys    None    ENTER
+#    Sleep    2
+#    Wait Until Element Is Visible    ${BatchProgramSelect}
+#    Click Element    ${BatchProgramSelect}
+#    Sleep    2
+#    Press Keys    None    ARROW_DOWN
+#    Sleep    2
+#    Press Keys    None    ENTER
+#    Sleep    2
+#    Wait Until Element Is Visible    ${BatchProgramSelect}
+#    Click Element    ${BatchProgramSelect}
+#    Sleep    2
+#    Press Keys    None    ARROW_DOWN
+#    Sleep    2
+#    Press Keys    None    ARROW_DOWN
+#    Sleep    2
+#    Press Keys    None    ENTER
+#    Sleep    2
+#    Wait Until Element Is Visible    ${BatchProgramSelect}
+#    Click Element    ${BatchProgramSelect}
+#    Sleep    2
+#    Press Keys    None    ARROW_DOWN
+#    Sleep    2
+#    Press Keys    None    ARROW_DOWN
+#    Sleep    2
+#    Press Keys    None    ARROW_DOWN
+#    Sleep    2
+#    Press Keys    None    ENTER
+#    Sleep    2
+
+Run Batch
+    Wait Until Element Is Visible    ${ProgramsFolder}
+    Click Element    ${ProgramsFolder}
+    Sleep    3
+    Wait Until Element Is Visible    ${LastThreeBars}
+    Click Element    ${LastThreeBars}
+    Sleep    3
+    Wait Until Element Is Visible    ${ThreeBarsRun}
+    Click Element    ${ThreeBarsRun}
+    Sleep    3
+    Wait Until Element Is Visible    ${LastThreeBars}
+    Click Element    ${LastThreeBars}
+    Sleep    3
+    Sleep    10
+    Wait Until Element Is Visible    ${LastThreeBars}
+    Click Element    ${LastThreeBars}
+    Sleep    3
+    Wait Until Element Is Visible    ${ThreeBarsRun}
+    Click Element    ${ThreeBarsRun}
+    Wait Until Element Is Visible    ${BatchRunConfirmPrompt}        timeout=30
+    ${RGreenTick}=    Replace String  ${ProgRunGreenTick}  xyz  R.r
+    ${RubyGreenTick}=    Replace String  ${ProgRunGreenTick}  xyz  file_copier.rb
+    Element Should Be Visible    ${RGreenTick}
+    Element Should Be Visible    ${RubyGreenTick}
+    Wait Until Element Is Visible    ${LastThreeBars}
+    Click Element    ${LastThreeBars}
+    Sleep    3
+    Wait Until Element Is Visible    ${LastThreeBars}
+    Click Element    ${LastThreeBars}
+    Sleep    3
+    Wait Until Element Is Visible    ${ThreeBarsHistory}
+    Click Element    ${ThreeBarsHistory}
+    Wait Until Element Is Visible    ${OkPromptInHistory}        timeout=30
+    Sleep    3
+
+Run Data Migration
+    Wait Until Element Is Visible    ${SCELogo}
+    Click Element    ${SCELogo}
+    Sleep    3
+    Wait Until Element Is Visible    ${MainSearchBar}
+    Click Element    ${MainSearchBar}
+    Sleep    1
+    Input Text    ${MainSearchBar}    migrate
+    Sleep    5
+    Wait Until Element Is Visible    ${FirstSearchResult}
+    Click Element    ${FirstSearchResult}
+    Sleep    3
+    ${foldername}=    Replace String  ${EnterFolderName}  xyz  trash
+    Wait Until Element Is Visible    ${foldername}
+    Click Element    ${foldername}
+    Sleep    3
+    Wait Until Element Is Visible    ${JsonFileInStudy}
+    Click Element    ${JsonFileInStudy}
+    Sleep    3
+
+    # make edits or upload updated json file
+
+    Wait Until Element Is Visible    ${foldername}
+    Click Element    ${foldername}
+    Sleep    3
+    Wait Until Element Is Visible    ${RubyFileInStudy}
+    Click Element    ${RubyFileInStudy}
+    Sleep    3
+
+    # make edits or upload updated ruby file
+
+    Wait Until Element Is Visible    ${Run}
+    Click Element    ${Run}
+    Sleep    5
+    ${RubyGreenTick}=    Replace String  ${ProgRunGreenTick}  xyz  wrapper.rb
+    Wait Until Element Is Visible    ${foldername}
+    Click Element    ${foldername}
+    Sleep    3
+    Wait Until Element Is Visible    ${RubyGreenTick}       timeout=30
+    Sleep    3
+    Wait Until Element Is Visible    ${SCELogo}
+    Click Element    ${SCELogo}
+    Sleep    3
+    Wait Until Element Is Visible    ${MainSearchBar}
+    Click Element    ${MainSearchBar}
+    Sleep    1
+    Input Text    ${MainSearchBar}    study_name
+    Sleep    5
+    Wait Until Element Is Visible    ${FirstSearchResult}
+    Click Element    ${FirstSearchResult}
+    Sleep    3
+    Wait Until Element Is Visible    ${foldername}
+    Click Element    ${foldername}
+    Sleep    3
+
+    # check if the files are there

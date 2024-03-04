@@ -28,9 +28,10 @@ Create New Workspace
     Click Element    ${CreateWorkspace}
     Wait Until Element Is Visible    ${WorkspaceConfirmation}
     Wait Until Element Is Not Visible    ${WorkspaceConfirmation}       timeout=30
+    Sleep    3
     Wait Until Element Is Visible    ${RootFolders}
     Click Element    ${RootFolders}
-    Sleep    3
+    Sleep    5
 #    Wait Until Element Is Visible    ${Workspaces}
 #    Click Element    ${Workspaces}
 #    Sleep    2
@@ -217,3 +218,85 @@ Download File and Check
     Sleep    10
     ${file_name}=    Set Variable    C:\\Users\\siddh\\Downloads\\dm_sas7bdat_prog.sas
     Run Keyword If   ${{os.path.exists($file_name)}} is False    Fail        File does not exist
+
+Make Change to Special Char File in Workspace and Merge to Study
+    Sleep    3
+    Wait Until Element Is Visible    ${Workspaces}
+    Click Element    ${Workspaces}
+    Sleep    3
+    Wait Until Element Is Visible    ${WorkspaceSearch}
+    Click Element    ${WorkspaceSearch}
+    Sleep    3
+    Press Keys    None    TAB
+    Sleep    3
+    Press Keys    None    ENTER
+    Sleep    5
+    Wait Until Element Is Visible    ${RootFolders}
+    Click Element    ${RootFolders}
+    Sleep    3
+    Wait Until Element Is Visible    ${DataFolder}
+    Click Element    ${DataFolder}
+    Sleep    2
+    Wait Until Element Is Visible    ${SpecialCharFileVerify}
+    Wait Until Element Is Visible    ${NewSpecialCharFileVerify}
+    Wait Until Element Is Visible    ${Upload}
+    Click Element    ${Upload}
+    Sleep    3
+    Wait Until Element Is Visible    ${UploadFile}
+    Input Text    ${UploadFile}    ${TEST_DATA_DIR}\\test2Test~ @ # $ % ^ + = { } [ ] ; ,.txt
+    Sleep    10
+    Wait Until Element Is Visible    ${NewSpecialCharFileVerify}
+#    Click Element    ${NewSpecialCharFileVerify}
+#    Sleep    3
+#    Wait Until Element Is Visible    ${EditButtonInWorkspaceDashboard}
+#    Click Element    ${EditButtonInWorkspaceDashboard}
+#    Sleep    10
+#    Wait Until Element Is Visible    ${TextInput}       timeout=10
+#    Input Text    ${TextInput}    test
+#    Sleep    3
+#    Wait Until Element Is Visible    ${SaveButtonInWorkspaceDashboard}
+#    Click Element    ${SaveButtonInWorkspaceDashboard}
+#    Sleep    3
+#    Wait Until Element Is Visible    ${UpdateFileButton}
+#    Click Element    ${UpdateFileButton}
+#    Sleep    5
+#    Wait Until Element Is Visible    ${DataFolder}
+#    Click Element    ${DataFolder}
+#    Sleep    2
+    Wait Until Element Is Visible    ${Merge}
+    Click Element    ${Merge}
+    Sleep    2
+    Wait Until Element Is Visible    ${SelectForMerge}
+    Click Element    ${SelectForMerge}
+    Sleep    2
+    Press Keys    None    ARROW_DOWN
+    Sleep    2
+    Press Keys    None    ENTER
+    Sleep    10
+    Wait Until Element Is Visible    ${SelectAll}
+    Click Element    ${SelectAll}
+    Sleep    3
+    Wait Until Element Is Visible    ${MergeConfirm}
+    Click Element    ${MergeConfirm}
+    Wait Until Element Is Visible    ${MergeSuccess}        timeout=30
+    Sleep    2
+    Wait Until Element Is Visible    ${CloseButton}
+    Click Element    ${CloseButton}
+    Sleep    5
+    Wait Until Element Is Visible    ${Workspaces}
+    Click Element    ${Workspaces}
+    Sleep    2
+    Press Keys    None    TAB
+    Sleep    2
+    Press Keys    None    ENTER
+    Sleep    5
+    Wait Until Element Is Visible    ${RootFolders}
+    Click Element    ${RootFolders}
+    Sleep    3
+    Wait Until Element Is Visible    ${DataFolder}
+    Click Element    ${DataFolder}
+    Sleep    2
+    Wait Until Element Is Visible    ${NewSpecialCharFileVerify}
+    Click Element    ${NewSpecialCharFileVerify}
+    Sleep    3
+    Wait Until Element Is Visible    ${UpdatedFileVerify}       timeout=30
