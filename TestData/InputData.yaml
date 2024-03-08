@@ -2,3 +2,6 @@ WaiverRoleNameArg: test
 StepNameArg: auto
 WorkflowNameArg: auto
 GlobalRoleNameArg: auto
+StorageNameArg: Data Server Storage
+FolderTypeArg: documents
+PermissionTypeArg: Blinded

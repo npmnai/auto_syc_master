@@ -14,4 +14,3 @@ Create New Study and Upload Programs and Execute
     Create Base Folders in Study
     Upload Programs to Study
     Execute Programs
-    Logout of SCE Application

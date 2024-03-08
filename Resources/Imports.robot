@@ -11,13 +11,13 @@ Library    ../Libraries/Common.py
 
 Resource   ../Libraries/ExcelLib.robot
 Resource   ../Libraries/TestSetup.robot
+Resource   ../Libraries/UILib.robot
 
 Resource   ../SCE_PageKeywords/SCEKeywordsLogin.robot
 Resource   ../SCE_PageKeywords/SCEKeywordsDashboard.robot
 Resource   ../SCE_PageKeywords/SCEKeywordsAppGroup.robot
 Resource   ../SCE_PageKeywords/SCEKeywordsAppGroupRoles.robot
 Resource   ../SCE_PageKeywords/SCEKeywordsWorkflowSteps.robot
-Resource   ../SCE_PageKeywords/SCEKeywordsAppFolders.robot
 Resource   ../SCE_PageKeywords/SCEKeywordsStudies.robot
 Resource   ../SCE_PageKeywords/SCEKeywordsUserAccess.robot
 Resource   ../SCE_PageKeywords/SCEKeywordsWorkspaces.robot
@@ -30,4 +30,4 @@ Resource   ../SCE_PageKeywords/SCEKeywordsWorkspaces.robot
 
 Variables  ../AutomationConfig.yaml
 Variables  ../Resources/Waits.yaml
-#Variables  ../TestData/SCE_Smoke.yaml
+Variables  ../TestData/InputData.yaml

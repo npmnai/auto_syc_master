@@ -13,4 +13,3 @@ Create New Study Template and Study and Folder
     Create New Study Template
     Create New Folder
     Create New Study From Template
-    Logout of SCE Application

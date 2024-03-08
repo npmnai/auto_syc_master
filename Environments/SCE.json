@@ -10,5 +10,11 @@
     "AppURL": "U1",
     "Email": "E1",
     "Password": "P1"
+  },
+  "ACME04":
+  {
+    "AppURL": "https://cdrsce-acme.sycamoreinformatics.com/users/sign_in",
+    "Email": "swathi.grande+oa@sycamoreinformatics.com",
+    "Password": "Password@4"
   }
 }

@@ -6,255 +6,263 @@ Variables  ../SCE_PageLocators/SCELocatorsDashboard.py
 Variables  ../SCE_PageLocators/SCELocatorsNewStudy.py
 Variables  ../SCE_PageLocators/SCELocatorsStudies.py
 Variables  ../SCE_PageLocators/SCELocatorsUserAccess.py
-Variables  ../SCE_PageLocators/SCELocatorsAppFolders.py
 Variables  ../SCE_PageLocators/SCE_LocatorsDownloads.py
+Variables  ../TestData/InputData.yaml
+Resource    ../Libraries/UILib.robot
 
 *** Keywords ***
 Create New Study Template
-    Wait Until Element Is Visible    ${New}
-    Click Element    ${New}
-    Wait Until Element Is Visible    ${NewStudy}
-    Click Element    ${NewStudy}
+    Wait Until Web Element Is Visible   Home    New    ${New}
+    Click Web Element    Home    New    ${New}
+    Wait Until Web Element Is Visible   Home    New Study    ${NewStudy}
+    Click Web Element    Home    New Study    ${NewStudy}
     @{list} =    Get Name And Desc      template
     ${StudyData} =  Set Variable    ${list}[0]
     Set Suite Variable    ${StudyData}
-    Wait Until Element Is Visible    ${StudyNumber}
-    Input Text    ${StudyNumber}    ${StudyData}
-    Wait Until Element Is Visible    ${StudyName}
-    Input Text    ${StudyName}    ${StudyData}
-    Wait Until Element Is Visible    ${StudyTitle}
-    Input Text    ${StudyTitle}    ${StudyData}
-    Wait Until Element Is Visible    ${IsTemplate}
-    Click Element    ${IsTemplate}
-    Wait Until Element Is Visible    ${StorageButton}
-    Click Element    ${StorageButton}
-    Wait Until Element Is Visible    ${StudySearch}
-    Input Text    ${StudySearch}   Data Server Storage\n
+    Wait Until Web Element Is Visible   Create Study    Study Number    ${StudyNumber}
+    Fill Text    Create Study    Study Number    ${StudyNumber}    ${StudyData}
+    Wait Until Web Element Is Visible   Create Study    Study Name    ${StudyName}
+    Fill Text    Create Study    Study Name    ${StudyName}    ${StudyData}
+    Wait Until Web Element Is Visible   Create Study    Study Title    ${StudyTitle}
+    Fill Text    Create Study    Study Title    ${StudyTitle}    ${StudyData}
+    Wait Until Web Element Is Visible   Create Study    Template Checkbox    ${IsTemplate}
+    Click Web Element    Create Study    Template Checkbox    ${IsTemplate}
+    Wait Until Web Element Is Visible   Create Study    Storage Button    ${StorageButton}
+    Click Web Element    Create Study    Storage Button    ${StorageButton}
+    Wait Until Web Element Is Visible   Create Study    Storage Search    ${StudySearch}
+    Fill Text    Create Study    Storage Search    ${StudySearch}    ${StorageNameArg}\n
+    Wait Until Web Element Is Visible   Create Study    CreateStudy    ${CreateStudy}
+    Click Web Element    Create Study    CreateStudy    ${CreateStudy}
+    Wait Until Web Element Is Visible   Study    StudyConfirmed    ${StudyConfirmed}
+
+Create New Folder
+    Wait Until Web Element Is Visible   Study    Folders View    ${RootFolders}
+    Click Web Element    Study    Folders View    ${RootFolders}
+    Wait Until Web Element Is Visible   Study    New    ${New}
+    Click Web Element   Study    New    ${New}
+    Wait Until Web Element Is Visible   Study    New Folder    ${NewFolder}
+    Click Web Element   Study    New Folder    ${NewFolder}
+    Wait Until Web Element Is Visible   Create Folder    Folder Name Input    ${FolderNameInput}
+    Fill Text    Create Folder    Folder Name Input     ${FolderNameInput}    ${StudyData}_FOLDER
+    Wait Until Web Element Is Visible   Create Folder    FolderTypeButton    ${FolderTypeButton}
+    Click Web Element   Create Folder    FolderTypeButton    ${FolderTypeButton}
+    Wait Until Web Element Is Visible   Create Folder    Folder Type Search    ${SelectSearch}
+    Fill Text    Create Folder    Folder Type Search    ${SelectSearch}   ${FolderTypeArg}\n
+    Wait Until Web Element Is Visible   Create Folder    PermissionTypeButton    ${PermissionTypeButton}
+    Click Web Element   Create Folder    PermissionTypeButton    ${PermissionTypeButton}
+    Wait Until Web Element Is Visible   Create Folder    Permission Type Search    ${SelectSearch}
+    Fill Text    Create Folder    Permission Type Search    ${SelectSearch}   ${PermissionTypeArg}\n
+    Wait Until Web Element Is Visible   Create Folder    Create Folder Button    ${CreateFolder}
+    Click Web Element   Create Folder    Create Folder Button    ${CreateFolder}
+    Wait Until Web Element Is Visible   Create Folder    FolderConfirmed    ${FolderConfirmed}
+
+Create Base Folders in Study
+    Wait Until Web Element Is Visible    Study    RootFolders    ${RootFolders}
+    Click Web Element    Study    RootFolders    ${RootFolders}
+    Wait Until Web Element Is Visible    Study    New    ${New}
+    Click Web Element    Study    New    ${New}
+    Wait Until Web Element Is Visible    Study    NewFolder    ${NewFolder}
+    Click Web Element    Study    NewFolder    ${NewFolder}
+    Wait Until Web Element Is Visible    CreateFolder    FolderNameInput    ${FolderNameInput}
+    Fill Text    CreateFolder    FolderNameInput    ${FolderNameInput}    documents
+    Wait Until Element Is Visible    ${FolderTypeButton}
+    Click Element    ${FolderTypeButton}
+    Wait Until Element Is Visible    ${SelectSearch}
+    Input Text    ${SelectSearch}   documents\n
+    Wait Until Element Is Visible    ${CreateFolder}
+    Click Element    ${CreateFolder}
     Sleep    2
-    Wait Until Element Is Visible    ${CreateStudy}
-    Click Element    ${CreateStudy}
+    Wait Until Element Is Visible    ${FolderConfirmed}
     Sleep    2
-    Wait Until Element Is Visible    ${StudyConfirmed}
+    Wait Until Element Is Visible    ${New}
+    Click Element    ${New}
+    Wait Until Element Is Visible    ${NewFolder}
+    Click Element    ${NewFolder}
+    Wait Until Element Is Visible    ${FolderNameInput}
+    Input Text    ${FolderNameInput}    data
+    Wait Until Element Is Visible    ${FolderTypeButton}
+    Click Element    ${FolderTypeButton}
+    Wait Until Element Is Visible    ${SelectSearch}
+    Input Text    ${SelectSearch}   data\n
+    Wait Until Element Is Visible    ${CreateFolder}
+    Click Element    ${CreateFolder}
+    Sleep    2
+    Wait Until Element Is Visible    ${FolderConfirmed}
+    Sleep    2
+    Wait Until Element Is Visible    ${New}
+    Click Element    ${New}
+    Wait Until Element Is Visible    ${NewFolder}
+    Click Element    ${NewFolder}
+    Wait Until Element Is Visible    ${FolderNameInput}
+    Input Text    ${FolderNameInput}    programs
+    Wait Until Element Is Visible    ${FolderTypeButton}
+    Click Element    ${FolderTypeButton}
+    Wait Until Element Is Visible    ${SelectSearch}
+    Input Text    ${SelectSearch}   programs\n
+    Wait Until Element Is Visible    ${CreateFolder}
+    Click Element    ${CreateFolder}
+    Sleep    2
+    Wait Until Element Is Visible    ${FolderConfirmed}
+    Sleep    2
+    Wait Until Element Is Visible    ${New}
+    Click Element    ${New}
+    Wait Until Element Is Visible    ${NewFolder}
+    Click Element    ${NewFolder}
+    Wait Until Element Is Visible    ${FolderNameInput}
+    Input Text    ${FolderNameInput}    results
+    Wait Until Element Is Visible    ${FolderTypeButton}
+    Click Element    ${FolderTypeButton}
+    Wait Until Element Is Visible    ${SelectSearch}
+    Input Text    ${SelectSearch}   results\n
+    Wait Until Element Is Visible    ${CreateFolder}
+    Click Element    ${CreateFolder}
+    Sleep    2
+    Wait Until Element Is Visible    ${FolderConfirmed}
+    Sleep    2
+    Wait Until Element Is Visible    ${ResultsFolder}
+    Click Element    ${ResultsFolder}
+    Sleep    2
+    Wait Until Element Is Visible    ${New}
+    Click Element    ${New}
+    Wait Until Element Is Visible    ${NewFolder}
+    Click Element    ${NewFolder}
+    Wait Until Element Is Visible    ${FolderNameInput}
+    Input Text    ${FolderNameInput}    python
+    Wait Until Element Is Visible    ${FolderTypeButton}
+    Click Element    ${FolderTypeButton}
+    Wait Until Element Is Visible    ${SelectSearch}
+    Input Text    ${SelectSearch}   results\n
+    Wait Until Element Is Visible    ${CreateFolder}
+    Click Element    ${CreateFolder}
+    Sleep    2
+    Wait Until Element Is Visible    ${FolderConfirmed}
+    Sleep    5
 
 Create New Study From Template
-    Wait Until Element Is Visible    ${SCELogo}
-    Click Element    ${SCELogo}
-    Sleep    2
-    Wait Until Element Is Visible    ${New}
-    Click Element    ${New}
-    Wait Until Element Is Visible    ${NewStudy}
-    Click Element    ${NewStudy}
-    Wait Until Element Is Visible    ${TemplateButton}
-    Click Element    ${TemplateButton}
-    Wait Until Element Is Visible    ${StudySearch}
-    Input Text    ${StudySearch}    ${StudyData}\n
-    Wait Until Element Is Visible    ${StudyNumber}
-    Input Text    ${StudyNumber}    ${StudyData}_STUDY
-    Wait Until Element Is Visible    ${StudyName}
-    Input Text    ${StudyName}    ${StudyData}_STUDY
-    Wait Until Element Is Visible    ${StudyTitle}
-    Input Text    ${StudyTitle}    ${StudyData}_STUDY
-    Wait Until Element Is Visible    ${CreateStudy}
-    Click Element    ${CreateStudy}
-    Sleep    2
-    Wait Until Element Is Visible    ${StudyRequest}
+    Wait Until Web Element Is Visible    Study    SCELogo    ${SCELogo}
+    Click Web Element    Study    SCELogo    ${SCELogo}
+    Wait Until Web Element Is Visible    Home    New    ${New}
+    Click Web Element    Home    New    ${New}
+    Wait Until Web Element Is Visible    Home    NewStudy    ${NewStudy}
+    Click Web Element    Home    NewStudy    ${NewStudy}
+    Wait Until Web Element Is Visible    CreateStudy    TemplateButton    ${TemplateButton}
+    Click Web Element    CreateStudy    TemplateButton    ${TemplateButton}
+    Wait Until Web Element Is Visible    CreateStudy    StudySearch    ${StudySearch}
+    Fill Text    CreateStudy    StudySearch    ${StudySearch}    ${StudyData}\n
+    Wait Until Web Element Is Visible    CreateStudy    StudyNumber    ${StudyNumber}
+    Fill Text    CreateStudy    StudyNumber    ${StudyNumber}    ${StudyData}_STUDY
+    Wait Until Web Element Is Visible    CreateStudy    StudyName    ${StudyName}
+    Fill Text    CreateStudy    StudyName    ${StudyName}    ${StudyData}_STUDY
+    Wait Until Web Element Is Visible    CreateStudy    StudyTitle    ${StudyTitle}
+    Fill Text    CreateStudy    StudyTitle    ${StudyTitle}    ${StudyData}_STUDY
+    Wait Until Web Element Is Visible    CreateStudy    CreateStudyButton    ${CreateStudy}
+    Click Web Element    CreateStudy    CreateStudyButton    ${CreateStudy}
+    Wait Until Web Element Is Visible    CreateStudy    StudyRequest    ${StudyRequest}
 
 Create New Study
-    Wait Until Element Is Visible    ${SCELogo}
-    Click Element    ${SCELogo}
-    Sleep    2
-    Wait Until Element Is Visible    ${New}
-    Click Element    ${New}
-    Wait Until Element Is Visible    ${NewStudy}
-    Click Element    ${NewStudy}
+    Wait Until Web Element Is Visible    Default    SCELogo    ${SCELogo}
+    Click Web Element    Default    SCELogo    ${SCELogo}
+    Wait Until Web Element Is Visible    Home    New    ${New}
+    Click Web Element    Home    New    ${New}
+    Wait Until Web Element Is Visible    Home    NewStudy    ${NewStudy}
+    Click Web Element    Home    NewStudy    ${NewStudy}
     @{list} =    Get Name And Desc      study
     ${StudyData} =  Set Variable    ${list}[0]
     Set Suite Variable    ${StudyData}
-    Wait Until Element Is Visible    ${StudyNumber}
-    Input Text    ${StudyNumber}    ${StudyData}
-    Sleep    2
-    Wait Until Element Is Visible    ${StudyName}
-    Input Text    ${StudyName}    ${StudyData}
-    Wait Until Element Is Visible    ${StudyTitle}
-    Input Text    ${StudyTitle}    ${StudyData}
-    Wait Until Element Is Visible    ${StorageButton}
-    Click Element    ${StorageButton}
-    Wait Until Element Is Visible    ${StudySearch}
-    Input Text    ${StudySearch}   Data Server Storage\n
-    Sleep    2
-    Wait Until Element Is Visible    ${CreateStudy}
-    Click Element    ${CreateStudy}
-    Sleep    2
-    Wait Until Element Is Visible    ${StudyConfirmed}
-    Sleep    3
-    Wait Until Element Is Visible    ${RootFolders}
-    Click Element    ${RootFolders}
-    Sleep    3
+    Wait Until Web Element Is Visible    CreateStudy    StudyNumber    ${StudyNumber}
+    Fill Text    CreateStudy    StudyNumber    ${StudyNumber}    ${StudyData}
+    Wait Until Web Element Is Visible    CreateStudy    StudyName    ${StudyName}
+    Fill Text    CreateStudy    StudyName    ${StudyName}    ${StudyData}
+    Wait Until Web Element Is Visible    CreateStudy    StudyTitle    ${StudyTitle}
+    Fill Text    CreateStudy    StudyTitle    ${StudyTitle}    ${StudyData}
+#    Wait Until Web Element Is Visible    CreateStudy    StorageButton    ${StorageButton}
+#    Click Web Element    CreateStudy    StorageButton    ${StorageButton}
+#    Wait Until Web Element Is Visible    CreateStudy    StudySearch    ${StudySearch}
+#    Fill Text    CreateStudy    StudySearch    ${StudySearch}   ${StorageNameArg}\n
+    Wait Until Web Element Is Visible    CreateStudy    CreateStudyButton    ${CreateStudy}
+    Click Web Element    CreateStudy    CreateStudyButton    ${CreateStudy}
+    Wait Until Web Element Is Visible    Study    StudyConfirmed    ${StudyConfirmed}
+    Wait Until Web Element Is Visible    Study    RootFolders    ${RootFolders}
+    Click Web Element    Study    RootFolders    ${RootFolders}
 
 Upload Programs to Study
-    Wait Until Element Is Visible    ${ProgramsFolder}
-    Click Element    ${ProgramsFolder}
-    Sleep    2
-    Wait Until Element Is Visible    ${Upload}
-    Click Element    ${Upload}
-    Sleep    2
-    Wait Until Element Is Visible    ${UploadFile}
-    Input Text    ${UploadFile}    ${TEST_DATA_DIR}\\file_copier.rb
-    Sleep    10
-    Wait Until Element Is Visible    ${Upload}
-    Click Element    ${Upload}
-    Sleep    2
-    Wait Until Element Is Visible    ${UploadFile}
-    Input Text    ${UploadFile}    ${TEST_DATA_DIR}\\dm_sas7bdat_prog.sas
-    Sleep    10
-    Wait Until Element Is Visible    ${Upload}
-    Click Element    ${Upload}
-    Sleep    2
-    Wait Until Element Is Visible    ${UploadFile}
-    Input Text    ${UploadFile}    ${TEST_DATA_DIR}\\pythonSecureExecution.py
-    Sleep    10
-    Wait Until Element Is Visible    ${Upload}
-    Click Element    ${Upload}
-    Sleep    2
-    Wait Until Element Is Visible    ${UploadFile}
-    Input Text    ${UploadFile}    ${TEST_DATA_DIR}\\R.r
-    Sleep    10
-    Wait Until Element Is Visible    ${DataFolder}
-    Click Element    ${DataFolder}
-    Sleep    2
-    Wait Until Element Is Visible    ${Upload}
-    Click Element    ${Upload}
-    Sleep    2
-    Wait Until Element Is Visible    ${UploadFile}
-    Input Text    ${UploadFile}    ${TEST_DATA_DIR}\\raw_dm.sas7bdat
-    Sleep    10
-    Wait Until Element Is Visible    ${Upload}
-    Click Element    ${Upload}
-    Sleep    2
-    Wait Until Element Is Visible    ${UploadFile}
-    Input Text    ${UploadFile}    ${TEST_DATA_DIR}\\input.txt
-    Sleep    10
+    Wait Until Web Element Is Visible    Study    ProgramsFolder    ${ProgramsFolder}
+    Click Web Element    Study    ProgramsFolder    ${ProgramsFolder}
+    Wait Until Web Element Is Visible    Study    Upload    ${Upload}
+    Click Web Element    Study    Upload    ${Upload}
+    Wait Until Web Element Is Visible    Upload    UploadFile    ${UploadFile}
+    Fill Text    Upload    UploadFile    ${UploadFile}    ${TEST_DATA_DIR}\\file_copier.rb      10
+    Wait Until Web Element Is Visible    Study    Upload    ${Upload}
+    Click Web Element    Study    Upload    ${Upload}
+    Wait Until Web Element Is Visible    Upload    UploadFile    ${UploadFile}
+    Fill Text    Upload    UploadFile    ${UploadFile}    ${TEST_DATA_DIR}\\dm_sas7bdat_prog.sas      10
+    Wait Until Web Element Is Visible    Study    Upload    ${Upload}
+    Click Web Element    Study    Upload    ${Upload}
+    Wait Until Web Element Is Visible    Upload    UploadFile    ${UploadFile}
+    Fill Text    Upload    UploadFile    ${UploadFile}    ${TEST_DATA_DIR}\\pythonSecureExecution.py      10
+    Wait Until Web Element Is Visible    Study    Upload    ${Upload}
+    Click Web Element    Study    Upload    ${Upload}
+    Wait Until Web Element Is Visible    Upload    UploadFile    ${UploadFile}
+    Fill Text    Upload    UploadFile    ${UploadFile}    ${TEST_DATA_DIR}\\R.r     10
+    Wait Until Web Element Is Visible    Study    DataFolder    ${DataFolder}
+    Click Web Element    Study    DataFolder    ${DataFolder}
+    Wait Until Web Element Is Visible    Study    Upload    ${Upload}
+    Click Web Element    Study    Upload    ${Upload}
+    Wait Until Web Element Is Visible    Upload    UploadFile    ${UploadFile}
+    Fill Text    Upload    UploadFile    ${UploadFile}    ${TEST_DATA_DIR}\\raw_dm.sas7bdat     10
+    Wait Until Web Element Is Visible    Study    Upload    ${Upload}
+    Click Web Element    Study    Upload    ${Upload}
+    Wait Until Web Element Is Visible    Upload    UploadFile    ${UploadFile}
+    Fill Text    Upload    UploadFile    ${UploadFile}    ${TEST_DATA_DIR}\\input.txt       10
 
 Execute Programs
-    Wait Until Element Is Visible    ${ProgramsFolder}
-    Click Element    ${ProgramsFolder}
-    Sleep    5
-    Wait Until Element Is Visible    ${FileSearch}
-    Input Text    ${FileSearch}    .sas\n
-    Sleep    5
-    Wait Until Element Is Visible    ${FileThreeBars}
-    Click Element    ${FileThreeBars}
-    Sleep    5
-    Wait Until Element Is Visible    ${ThreeBarsRun}
-    Click Element    ${ThreeBarsRun}
-    Sleep    30
-    Wait Until Element Is Visible    ${ResultsFolder}
-    Click Element    ${ResultsFolder}
-    Sleep    5
-    Wait Until Element Is Visible    ${ProgramsFolder}
-    Click Element    ${ProgramsFolder}
-    Sleep    5
-    Wait Until Element Is Visible    ${FileSearch}
-    Input Text    ${FileSearch}    .rb\n
-    Sleep    5
-    Wait Until Element Is Visible    ${FileThreeBars}
-    Click Element    ${FileThreeBars}
-    Sleep    5
-    Wait Until Element Is Visible    ${ThreeBarsRun}
-    Click Element    ${ThreeBarsRun}
-    Sleep    30
-    Wait Until Element Is Visible    ${ResultsFolder}
-    Click Element    ${ResultsFolder}
-    Sleep    5
-    Wait Until Element Is Visible    ${ProgramsFolder}
-    Click Element    ${ProgramsFolder}
-    Sleep    5
-    Wait Until Element Is Visible    ${FileSearch}
-    Input Text    ${FileSearch}    .py\n
-    Sleep    5
-    Wait Until Element Is Visible    ${FileThreeBars}
-    Click Element    ${FileThreeBars}
-    Sleep    5
-    Wait Until Element Is Visible    ${ThreeBarsRun}
-    Click Element    ${ThreeBarsRun}
-    Sleep    60
-#    Wait Until Element Is Visible    ${ResultsFolder}
-#    Click Element    ${ResultsFolder}
-#    Sleep    5
-#    Wait Until Element Is Visible    ${ProgramsFolder}
-#    Click Element    ${ProgramsFolder}
-#    Sleep    5
-#    Wait Until Element Is Visible    ${FileSearch}
-#    Input Text    ${FileSearch}    .r\n
-#    Sleep    5
-#    Wait Until Element Is Visible    ${SecondThreeBars}
-#    Click Element    ${SecondThreeBars}
-#    Sleep    5
-#    Wait Until Element Is Visible    ${ThreeBarsRun}
-#    Click Element    ${ThreeBarsRun}
-#    Sleep    30
-    Wait Until Element Is Visible    ${DataFolder}
-    Click Element    ${DataFolder}
-    Sleep    5
-    Wait Until Element Is Visible    ${FileSearch}
-    Input Text    ${FileSearch}    .sas7bdat\n
-    Sleep    5
-    Wait Until Element Is Visible    ${SasOutput}
-    Wait Until Element Is Visible    ${ResultsFolder}
-    Click Element    ${ResultsFolder}
-    Sleep    5
-    Wait Until Element Is Visible    ${FileSearch}
-    Input Text    ${FileSearch}    .txt\n
-    Sleep    5
-    Wait Until Element Is Visible    ${RubyROutput}
-    Wait Until Element Is Visible    ${FileSearch}
-    Input Text    ${FileSearch}    python\n
-    Sleep    5
-    Wait Until Element Is Visible    ${PythonFolder}
-    Click Element    ${PythonFolder}
-    Sleep    5
-    Wait Until Element Is Visible    ${FileSearch}
-    Input Text    ${FileSearch}    .txt\n
-    Sleep    5
-    Wait Until Element Is Visible    ${PythonOutput}
-#    Wait Until Element Is Visible    ${ProgramsFolder}
-#    Click Element    ${ProgramsFolder}
-#    Wait Until Element Is Visible    ${RubyROutput}
+    Wait Until Web Element Is Visible    Study    ProgramsFolder    ${ProgramsFolder}
+    Click Web Element    Study    ProgramsFolder    ${ProgramsFolder}
+    Wait Until Web Element Is Visible    Study    FileSearch    ${FileSearch}
+    Fill Text    Study    FileSearch    ${FileSearch}    .sas\n
+    Wait Until Web Element Is Visible    Study    FileThreeBars    ${FileThreeBars}
+    Click Web Element    Study    FileThreeBars    ${FileThreeBars}
+    Wait Until Web Element Is Visible    Study    ThreeBarsRun    ${ThreeBarsRun}
+    Click Web Element    Study    ThreeBarsRun    ${ThreeBarsRun}       30
+    Wait Until Web Element Is Visible    Study    FileSearch    ${FileSearch}
+    Fill Text    Study    FileSearch    ${FileSearch}    .rb\n
+    Wait Until Web Element Is Visible    Study    FileThreeBars    ${FileThreeBars}
+    Click Web Element    Study    FileThreeBars    ${FileThreeBars}
+    Wait Until Web Element Is Visible    Study    ThreeBarsRun    ${ThreeBarsRun}
+    Click Web Element    Study    ThreeBarsRun    ${ThreeBarsRun}       30
+    Wait Until Web Element Is Visible    Study    FileSearch    ${FileSearch}
+    Fill Text    Study    FileSearch    ${FileSearch}    .py\n
+    Wait Until Web Element Is Visible    Study    FileThreeBars    ${FileThreeBars}
+    Click Web Element    Study    FileThreeBars    ${FileThreeBars}
+    Wait Until Web Element Is Visible    Study    ThreeBarsRun    ${ThreeBarsRun}
+    Click Web Element    Study    ThreeBarsRun    ${ThreeBarsRun}       90
+    Wait Until Web Element Is Visible    Study    FileSearch    ${FileSearch}
+    Fill Text    Study    FileSearch    ${FileSearch}    .r\n
+    Wait Until Web Element Is Visible    Study    SecondThreeBars    ${SecondThreeBars}
+    Click Web Element    Study    SecondThreeBars    ${SecondThreeBars}
+    Wait Until Web Element Is Visible    Study    ThreeBarsRun    ${ThreeBarsRun}
+    Click Web Element    Study    ThreeBarsRun    ${ThreeBarsRun}       30
 
-
-#    Wait Until Element Is Visible    ${SasProg}
-#    Click Element    ${SasProg}
-#    Sleep    5
-#    Wait Until Element Is Visible    ${Run}     timeout=30s
-#    Click Element    ${Run}
-#    Sleep    30
-#    Wait Until Element Is Visible    ${ProgramsFolder}
-#    Click Element    ${ProgramsFolder}
-#    Sleep    5
-#    Wait Until Element Is Visible    ${RubyProg}
-#    Click Element    ${RubyProg}
-#    Sleep    5
-#    Wait Until Element Is Visible    ${Run}     timeout=30s
-#    Click Element    ${Run}
-#    Sleep    30
-#    Wait Until Element Is Visible    ${ProgramsFolder}
-#    Click Element    ${ProgramsFolder}
-#    Sleep    5
-#    Wait Until Element Is Visible    ${PythonProg}
-#    Click Element    ${PythonProg}
-#    Sleep    5
-#    Wait Until Element Is Visible    ${Run}     timeout=30s
-#    Click Element    ${Run}
-#    Sleep    60
-#    Wait Until Element Is Visible    ${ProgramsFolder}
-#    Click Element    ${ProgramsFolder}
-#    Sleep    5
-#    Wait Until Element Is Visible    ${RProg}
-#    Click Element    ${RProg}
-#    Sleep    5
-#    Wait Until Element Is Visible    ${Run}
-#    Click Element    ${Run}
-#    Sleep    30
+    Wait Until Web Element Is Visible    Study    FileSearch    ${FileSearch}
+    Fill Text    Study    FileSearch    ${FileSearch}    .txt\n
+    Wait Until Web Element Is Visible    Study    RubyROutput    ${RubyROutput}
+    Wait Until Web Element Is Visible    Study    DataFolder    ${DataFolder}
+    Click Web Element    Study    DataFolder    ${DataFolder}
+    Wait Until Web Element Is Visible    Study    FileSearch    ${FileSearch}
+    Fill Text    Study    FileSearch    ${FileSearch}    .sas7bdat\n
+    Wait Until Web Element Is Visible    Study    SasOutput    ${SasOutput}
+    Wait Until Web Element Is Visible    Study    ResultsFolder    ${ResultsFolder}
+    Click Web Element    Study    ResultsFolder    ${ResultsFolder}
+    Wait Until Web Element Is Visible    Study    FileSearch    ${FileSearch}
+    Fill Text    Study    FileSearch    ${FileSearch}    .txt\n
+    Wait Until Web Element Is Visible    Study    RubyROutput    ${RubyROutput}
+    Wait Until Web Element Is Visible    Study    FileSearch    ${FileSearch}
+    Fill Text    Study    FileSearch    ${FileSearch}    python\n
+    Wait Until Web Element Is Visible    Study    PythonFolder    ${PythonFolder}
+    Click Web Element    Study    PythonFolder    ${PythonFolder}
+    Wait Until Web Element Is Visible    Study    FileSearch    ${FileSearch}
+    Fill Text    Study    FileSearch    ${FileSearch}    .txt\n
+    Wait Until Web Element Is Visible    Study    PythonOutput    ${PythonOutput}
 
 Upload Files to Study
     Wait Until Element Is Visible    ${DataFolder}
