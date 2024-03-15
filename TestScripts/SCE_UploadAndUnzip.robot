@@ -13,4 +13,3 @@ Upload zip file to study and unzip
     Create New Study
     Create Base Folders in Study
     Upload and Unzip
-    Logout of SCE Application

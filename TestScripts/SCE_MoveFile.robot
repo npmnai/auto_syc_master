@@ -13,4 +13,3 @@ Upload and Copy file from Programs to Data
     Create New Study
     Create Base Folders in Study
     Move File From Programs to Results
-    Logout of SCE Application

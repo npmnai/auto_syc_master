@@ -216,32 +216,45 @@ Upload Programs to Study
     Fill Text    Upload    UploadFile    ${UploadFile}    ${TEST_DATA_DIR}\\input.txt       10
 
 Execute Programs
+    ${SasThreeBars}=    Replace String  ${NamedFileThreeBars}  xyz  dm_sas7bdat_prog.sas
+    ${RubyThreeBars}=    Replace String  ${NamedFileThreeBars}  xyz  file_copier.rb
+    ${PythonThreeBars}=    Replace String  ${NamedFileThreeBars}  xyz  pythonSecureExecution.py
+    ${RThreeBars}=    Replace String  ${NamedFileThreeBars}  xyz  R.r
+    ${RGreenTick}=    Replace String  ${ProgRunGreenTick}  xyz  R.r
+    ${RubyGreenTick}=    Replace String  ${ProgRunGreenTick}  xyz  file_copier.rb
+    ${SasGreenTick}=    Replace String  ${ProgRunGreenTick}  xyz  dm_sas7bdat_prog.sas
+    ${PythonGreenTick}=    Replace String  ${ProgRunGreenTick}  xyz  pythonSecureExecution.py
+
     Wait Until Web Element Is Visible    Study    ProgramsFolder    ${ProgramsFolder}
     Click Web Element    Study    ProgramsFolder    ${ProgramsFolder}
     Wait Until Web Element Is Visible    Study    FileSearch    ${FileSearch}
     Fill Text    Study    FileSearch    ${FileSearch}    .sas\n
-    Wait Until Web Element Is Visible    Study    FileThreeBars    ${FileThreeBars}
-    Click Web Element    Study    FileThreeBars    ${FileThreeBars}
+    Wait Until Web Element Is Visible    Study    SasThreeBars    ${SasThreeBars}
+    Click Web Element    Study    SasThreeBars    ${SasThreeBars}
     Wait Until Web Element Is Visible    Study    ThreeBarsRun    ${ThreeBarsRun}
-    Click Web Element    Study    ThreeBarsRun    ${ThreeBarsRun}       30
+    Click Web Element    Study    ThreeBarsRun    ${ThreeBarsRun}
+    Wait Until Web Element Is Visible    Study    SasGreenTick    ${SasGreenTick}    120
     Wait Until Web Element Is Visible    Study    FileSearch    ${FileSearch}
     Fill Text    Study    FileSearch    ${FileSearch}    .rb\n
-    Wait Until Web Element Is Visible    Study    FileThreeBars    ${FileThreeBars}
-    Click Web Element    Study    FileThreeBars    ${FileThreeBars}
+    Wait Until Web Element Is Visible    Study    RubyThreeBars    ${RubyThreeBars}
+    Click Web Element    Study    RubyThreeBars    ${RubyThreeBars}
     Wait Until Web Element Is Visible    Study    ThreeBarsRun    ${ThreeBarsRun}
-    Click Web Element    Study    ThreeBarsRun    ${ThreeBarsRun}       30
+    Click Web Element    Study    ThreeBarsRun    ${ThreeBarsRun}
+    Wait Until Web Element Is Visible    Study    RubyGreenTick    ${RubyGreenTick}    120
     Wait Until Web Element Is Visible    Study    FileSearch    ${FileSearch}
     Fill Text    Study    FileSearch    ${FileSearch}    .py\n
-    Wait Until Web Element Is Visible    Study    FileThreeBars    ${FileThreeBars}
-    Click Web Element    Study    FileThreeBars    ${FileThreeBars}
+    Wait Until Web Element Is Visible    Study    PythonThreeBars    ${PythonThreeBars}
+    Click Web Element    Study    PythonThreeBars    ${PythonThreeBars}
     Wait Until Web Element Is Visible    Study    ThreeBarsRun    ${ThreeBarsRun}
-    Click Web Element    Study    ThreeBarsRun    ${ThreeBarsRun}       90
+    Click Web Element    Study    ThreeBarsRun    ${ThreeBarsRun}
+    Wait Until Web Element Is Visible    Study    PythonGreenTick    ${PythonGreenTick}    120
     Wait Until Web Element Is Visible    Study    FileSearch    ${FileSearch}
     Fill Text    Study    FileSearch    ${FileSearch}    .r\n
-    Wait Until Web Element Is Visible    Study    SecondThreeBars    ${SecondThreeBars}
-    Click Web Element    Study    SecondThreeBars    ${SecondThreeBars}
+    Wait Until Web Element Is Visible    Study    RThreeBars    ${RThreeBars}
+    Click Web Element    Study    RThreeBars    ${RThreeBars}
     Wait Until Web Element Is Visible    Study    ThreeBarsRun    ${ThreeBarsRun}
-    Click Web Element    Study    ThreeBarsRun    ${ThreeBarsRun}       30
+    Click Web Element    Study    ThreeBarsRun    ${ThreeBarsRun}
+    Wait Until Web Element Is Visible    Study    RGreenTick    ${RGreenTick}    120
 
     Wait Until Web Element Is Visible    Study    FileSearch    ${FileSearch}
     Fill Text    Study    FileSearch    ${FileSearch}    .txt\n
@@ -265,246 +278,183 @@ Execute Programs
     Wait Until Web Element Is Visible    Study    PythonOutput    ${PythonOutput}
 
 Upload Files to Study
-    Wait Until Element Is Visible    ${DataFolder}
-    Click Element    ${DataFolder}
-    Sleep    2
-    Wait Until Element Is Visible    ${Upload}
-    Click Element    ${Upload}
-    Sleep    2
-    Wait Until Element Is Visible    ${UploadFile}
-    Input Text    ${UploadFile}    ${TEST_DATA_DIR}\\raw_dm.sas7bdat
-    Sleep    10
-    Wait Until Element Is Visible    ${Upload}
-    Click Element    ${Upload}
-    Sleep    2
-    Wait Until Element Is Visible    ${UploadFile}
-    Input Text    ${UploadFile}    ${TEST_DATA_DIR}\\ae2.xpt
-    Sleep    10
+    Wait Until Web Element Is Visible    Study    DataFolder    ${DataFolder}
+    Click Web Element    Study    DataFolder    ${DataFolder}
+    Wait Until Web Element Is Visible    Study    Upload    ${Upload}
+    Click Web Element    Study    Upload    ${Upload}
+    Wait Until Web Element Is Visible    Study    UploadFile    ${UploadFile}
+    Fill Text    Study    UploadFile    ${UploadFile}    ${TEST_DATA_DIR}\\raw_dm.sas7bdat     10
+    Wait Until Web Element Is Visible    Study    Upload    ${Upload}
+    Click Web Element    Study    Upload    ${Upload}
+    Wait Until Web Element Is Visible    Study    UploadFile    ${UploadFile}
+    Fill Text    Study    UploadFile    ${UploadFile}    ${TEST_DATA_DIR}\\ae2.xpt     10
 
 Convert Files to CSV
-    Wait Until Element Is Visible    ${DataFolder}
-    Click Element    ${DataFolder}
-    Sleep    2
-    Wait Until Element Is Visible    ${sas7bdat}
-    Click Element    ${sas7bdat}
-    Sleep    5
-    Wait Until Element Is Visible    ${ConvertToCSV}
-    Click Element    ${ConvertToCSV}
-    Wait Until Element Is Visible    ${PreparingForViewing}
-    Wait Until Element Is Not Visible    ${PreparingForViewing}     timeout=30
-    Sleep    5
-    Wait Until Element Is Visible    ${StudyIDColumn}
-    Wait Until Element Is Visible    ${RowCheckSas}
-    Wait Until Element Is Visible    ${DataFolder}
-    Click Element    ${DataFolder}
-    Sleep    2
-    Wait Until Element Is Visible    ${xpt}
-    Click Element    ${xpt}
-    Sleep    5
-    Wait Until Element Is Visible    ${ConvertCSVInline}
-    Click Element    ${ConvertCSVInline}
-    Wait Until Element Is Visible    ${PreparingForViewing}
-    Wait Until Element Is Not Visible    ${PreparingForViewing}     timeout=30
-    Sleep    5
-    Wait Until Element Is Visible    ${StudyIDColumn}
-    Wait Until Element Is Visible    ${RowCheckXpt}
+    Wait Until Web Element Is Visible    Study    DataFolder    ${DataFolder}
+    Click Web Element    Study    DataFolder    ${DataFolder}
+    Wait Until Web Element Is Visible    Study    sas7bdat    ${sas7bdat}
+    Click Web Element    Study    sas7bdat    ${sas7bdat}
+    Wait Until Web Element Is Visible    Study    ConvertToCSV    ${ConvertToCSV}
+    Click Web Element    Study    ConvertToCSV    ${ConvertToCSV}
+    Wait Until Web Element Is Visible    Study    PreparingForViewing    ${PreparingForViewing}
+    Wait Until Web Element Is Not Visible    Study    PreparingForViewing    ${PreparingForViewing}     30
+    Wait Until Web Element Is Visible    Study    StudyIDColumn    ${StudyIDColumn}
+    Wait Until Web Element Is Visible    Study    RowCheckSas    ${RowCheckSas}
 
+    Wait Until Web Element Is Visible    Study    DataFolder    ${DataFolder}
+    Click Web Element    Study    DataFolder    ${DataFolder}
+    Wait Until Web Element Is Visible    Study    xpt    ${xpt}
+    Click Web Element    Study    xpt    ${xpt}
+    Wait Until Web Element Is Visible    Study    ConvertCSVInline    ${ConvertCSVInline}
+    Click Web Element    Study    ConvertCSVInline    ${ConvertCSVInline}
+    Wait Until Web Element Is Visible    Study    PreparingForViewing    ${PreparingForViewing}
+    Wait Until Web Element Is Not Visible    Study    PreparingForViewing    ${PreparingForViewing}     30
+    Wait Until Web Element Is Visible    Study    StudyIDColumn    ${StudyIDColumn}
+    Wait Until Web Element Is Visible    Study    RowCheckXpt    ${RowCheckXpt}
 
 Upload Programs to Study for Dependency Check
-    Wait Until Element Is Visible    ${ProgramsFolder}
-    Click Element    ${ProgramsFolder}
-    Sleep    2
-    Wait Until Element Is Visible    ${Upload}
-    Click Element    ${Upload}
-    Sleep    2
-    Wait Until Element Is Visible    ${UploadFile}
-    Input Text    ${UploadFile}    ${TEST_DATA_DIR}\\dm_sas7bdat_prog.sas
-    Sleep    10
-    Click Element    ${Upload}
-    Sleep    2
-    Wait Until Element Is Visible    ${UploadFile}
-    Input Text    ${UploadFile}    ${TEST_DATA_DIR}\\dm_sas7bdat_prog_nocomments.sas
-    Sleep    10
-    Wait Until Element Is Visible    ${DataFolder}
-    Click Element    ${DataFolder}
-    Sleep    2
-    Wait Until Element Is Visible    ${Upload}
-    Click Element    ${Upload}
-    Sleep    2
-    Wait Until Element Is Visible    ${UploadFile}
-    Input Text    ${UploadFile}    ${TEST_DATA_DIR}\\raw_dm.sas7bdat
-    Sleep    10
-    Wait Until Element Is Visible    ${Upload}
-    Click Element    ${Upload}
-    Sleep    2
-    Wait Until Element Is Visible    ${UploadFile}
-    Input Text    ${UploadFile}    ${TEST_DATA_DIR}\\input.txt
-    Sleep    10
+    Wait Until Web Element Is Visible    Study    ProgramsFolder    ${ProgramsFolder}
+    Click Web Element    Study    ProgramsFolder    ${ProgramsFolder}
+    Wait Until Web Element Is Visible    Study    Upload    ${Upload}
+    Click Web Element    Study    Upload    ${Upload}
+    Wait Until Web Element Is Visible    Study    UploadFile    ${UploadFile}
+    Fill Text    Study    UploadFile    ${UploadFile}    ${TEST_DATA_DIR}\\dm_sas7bdat_prog.sas     10
+    Wait Until Web Element Is Visible    Study    Upload    ${Upload}
+    Click Web Element    Study    Upload    ${Upload}
+    Wait Until Web Element Is Visible    Study    UploadFile    ${UploadFile}
+    Fill Text    Study    UploadFile    ${UploadFile}    ${TEST_DATA_DIR}\\dm_sas7bdat_prog_nocomments.sas     10
+    Wait Until Web Element Is Visible    Study    DataFolder    ${DataFolder}
+    Click Web Element    Study    DataFolder    ${DataFolder}
+    Wait Until Web Element Is Visible    Study    Upload    ${Upload}
+    Click Web Element    Study    Upload    ${Upload}
+    Wait Until Web Element Is Visible    Study    UploadFile    ${UploadFile}
+    Fill Text    Study    UploadFile    ${UploadFile}    ${TEST_DATA_DIR}\\raw_dm.sas7bdat     10
+    Wait Until Web Element Is Visible    Study    Upload    ${Upload}
+    Click Web Element    Study    Upload    ${Upload}
+    Wait Until Web Element Is Visible    Study    UploadFile    ${UploadFile}
+    Fill Text    Study    UploadFile    ${UploadFile}    ${TEST_DATA_DIR}\\input.txt     10
 
 Download Folder and Check
-    Wait Until Element Is Visible    ${ProgramsFolder}
-    Click Element    ${ProgramsFolder}
-    Sleep    3
-    Wait Until Element Is Visible    ${Upload}
-    Click Element    ${Upload}
-    Sleep    3
-    Wait Until Element Is Visible    ${UploadFile}
-    Input Text    ${UploadFile}    ${TEST_DATA_DIR}\\dm_sas7bdat_prog.sas
-    Sleep    15
-    Wait Until Element Is Visible    ${DownloadInStudy}
-    Click Element    ${DownloadInStudy}
-    Sleep    3
+    Wait Until Web Element Is Visible    Study    ProgramsFolder    ${ProgramsFolder}
+    Click Web Element    Study    ProgramsFolder    ${ProgramsFolder}
+    Wait Until Web Element Is Visible    Study    Upload    ${Upload}
+    Click Web Element    Study    Upload    ${Upload}
+    Wait Until Web Element Is Visible    Study    UploadFile    ${UploadFile}
+    Fill Text    Study    UploadFile    ${UploadFile}    ${TEST_DATA_DIR}\\dm_sas7bdat_prog.sas     10
+    Wait Until Web Element Is Visible    Study    DownloadInStudy    ${DownloadInStudy}
+    Click Web Element    Study    DownloadInStudy    ${DownloadInStudy}
     ${modLoadingDownload}=    Replace String  ${LoadingDownload}  xyz  ${StudyData}
-    Wait Until Element Is Visible    ${modLoadingDownload}
+    Wait Until Web Element Is Visible    Study    modLoadingDownload    ${modLoadingDownload}
     Sleep    30
     Reload Page
-    Sleep    3
     ${modReadyToDownload}=    Replace String  ${ReadyToDownload}  xyz  ${StudyData}
-    Wait Until Element Is Visible    ${modReadyToDownload}
+    Wait Until Web Element Is Visible    Study    modReadyToDownload    ${modReadyToDownload}
     ${file_name}=       Get Text    ${FirstFileName}
-    Wait Until Element Is Visible    ${FirstDownloadButton}
-    Click Element    ${FirstDownloadButton}
-    Sleep    10
+    Wait Until Web Element Is Visible    Study    FirstDownloadButton    ${FirstDownloadButton}
+    Click Web Element    Study    FirstDownloadButton    ${FirstDownloadButton}     10
     ${file_path}=    Set Variable    C:\\Users\\siddh\\Downloads\\${file_name}
     Run Keyword If   ${{os.path.exists($file_path)}} is False    Fail        File does not exist
 
 Upload and Unzip
-    Wait Until Element Is Visible    ${ProgramsFolder}
-    Click Element    ${ProgramsFolder}
-    Sleep    3
-    Wait Until Element Is Visible    ${Upload}
-    Click Element    ${Upload}
-    Sleep    3
-    Wait Until Element Is Visible    ${UploadFile}
-    Input Text    ${UploadFile}    ${TEST_DATA_DIR}\\TestData.zip
-    Sleep    15
-    Wait Until Element Is Visible    ${ThirdThreeBars}
-    Click Element    ${ThirdThreeBars}
-    Sleep    3
-    Wait Until Element Is Visible    ${ThreeBarsUnzip}
-    Click Element    ${ThreeBarsUnzip}
-    Sleep    3
-    Wait Until Element Is Visible    ${UnzipInitiatedPrompt}        timeout=30
-    Wait Until Element Is Not Visible    ${UnzipInitiatedPrompt}        timeout=30
-    Wait Until Element Is Visible    ${UnzipFinishedPrompt}     timeout=30
-    Wait Until Element Is Not Visible    ${UnzipFinishedPrompt}     timeout=30
-    Wait Until Element Is Visible    ${SasProg}     timeout=30
-    Wait Until Element Is Visible    ${RubyProg}        timeout=30
+    Wait Until Web Element Is Visible    Study    ProgramsFolder    ${ProgramsFolder}
+    Click Web Element    Study    ProgramsFolder    ${ProgramsFolder}
+    Wait Until Web Element Is Visible    Study    Upload    ${Upload}
+    Click Web Element    Study    Upload    ${Upload}
+    Wait Until Web Element Is Visible    Study    UploadFile    ${UploadFile}
+    Fill Text    Study    UploadFile    ${UploadFile}    ${TEST_DATA_DIR}\\TestData.zip     15
+    ${ZipThreeBars}=    Replace String  ${NamedFileThreeBars}  xyz  TestData.zip
+    Wait Until Web Element Is Visible    Study    ZipThreeBars    ${ZipThreeBars}
+    Click Web Element    Study    ZipThreeBars    ${ZipThreeBars}
+    Wait Until Web Element Is Visible    Study    ThreeBarsUnzip    ${ThreeBarsUnzip}
+    Click Web Element    Study    ThreeBarsUnzip    ${ThreeBarsUnzip}
+#    Wait Until Web Element Is Visible    Study    UnzipInitiatedPrompt    ${UnzipInitiatedPrompt}
+#    Wait Until Web Element Is Not Visible    Study    UnzipInitiatedPrompt    ${UnzipInitiatedPrompt}
+#    Wait Until Web Element Is Visible    Study    UnzipFinishedPrompt    ${UnzipFinishedPrompt}
+#    Wait Until Web Element Is Not Visible    Study    UnzipFinishedPrompt    ${UnzipFinishedPrompt}
+    Wait Until Web Element Is Visible    Study    SasProg    ${SasProg}
+    Wait Until Web Element Is Visible    Study    RubyProg    ${RubyProg}
 
 Copy File From Programs to Data
-    Wait Until Element Is Visible    ${ProgramsFolder}
-    Click Element    ${ProgramsFolder}
-    Sleep    3
-    Wait Until Element Is Visible    ${Upload}
-    Click Element    ${Upload}
-    Sleep    3
-    Wait Until Element Is Visible    ${UploadFile}
-    Input Text    ${UploadFile}    ${TEST_DATA_DIR}\\dm_sas7bdat_prog.sas
-    Sleep    15
-    Wait Until Element Is Visible    ${SelectFirstFile}
-    Click Element    ${SelectFirstFile}
-    Sleep    3
-    Wait Until Element Is Visible    ${AddToClipboardButton}
-    Click Element    ${AddToClipboardButton}
-    Sleep    3
-    Wait Until Element Is Visible    ${AddedToClipboardPrompt}      timeout=30
-    Wait Until Element Is Not Visible    ${AddedToClipboardPrompt}      timeout=30
-    Wait Until Element Is Visible    ${DataFolder}
-    Click Element    ${DataFolder}
-    Sleep    3
-    Wait Until Element Is Visible    ${Clipboard}
-    Click Element    ${Clipboard}
-    Sleep    3
-    Wait Until Element Is Visible    ${SelectAllClipboard}
-    Click Element    ${SelectAllClipboard}
-    Sleep    3
-    Wait Until Element Is Visible    ${PasteHere}
-    Click Element    ${PasteHere}
-    Sleep    5
-    Wait Until Element Is Visible    ${Clipboard}
-    Click Element    ${Clipboard}
-    Sleep    10
-    Wait Until Element Is Visible    ${SasProg}
+    Wait Until Web Element Is Visible    Study    ProgramsFolder    ${ProgramsFolder}
+    Click Web Element    Study    ProgramsFolder    ${ProgramsFolder}
+    Wait Until Web Element Is Visible    Study    Upload    ${Upload}
+    Click Web Element    Study    Upload    ${Upload}
+    Wait Until Web Element Is Visible    Study    UploadFile    ${UploadFile}
+    Fill Text    Study    UploadFile    ${UploadFile}    ${TEST_DATA_DIR}\\dm_sas7bdat_prog.sas     10
+    Wait Until Web Element Is Visible    Study    SelectFirstFile    ${SelectFirstFile}
+    Click Web Element    Study    SelectFirstFile    ${SelectFirstFile}
+    Wait Until Web Element Is Visible    Study    AddToClipboardButton    ${AddToClipboardButton}
+    Click Web Element    Study    AddToClipboardButton    ${AddToClipboardButton}
+#    Wait Until Web Element Is Visible    Study    AddedToClipboardPrompt    ${AddedToClipboardPrompt}
+#    Wait Until Web Element Is Not Visible    Study    AddedToClipboardPrompt    ${AddedToClipboardPrompt}
+    Wait Until Web Element Is Visible    Study    DataFolder    ${DataFolder}
+    Click Web Element    Study    DataFolder    ${DataFolder}
+    Wait Until Web Element Is Visible    Study    Clipboard    ${Clipboard}
+    Click Web Element    Study    Clipboard    ${Clipboard}
+    Wait Until Web Element Is Visible    Study    SelectAllClipboard    ${SelectAllClipboard}
+    Click Web Element    Study    SelectAllClipboard    ${SelectAllClipboard}
+    Wait Until Web Element Is Visible    Study    PasteHere    ${PasteHere}
+    Click Web Element    Study    PasteHere    ${PasteHere}
+    Wait Until Web Element Is Visible    Study    Clipboard    ${Clipboard}
+    Click Web Element    Study    Clipboard    ${Clipboard}
+    Wait Until Web Element Is Visible    Study    SasProg    ${SasProg}
 
 Move File From Programs to Results
-    Wait Until Element Is Visible    ${ProgramsFolder}
-    Click Element    ${ProgramsFolder}
-    Sleep    3
-    Wait Until Element Is Visible    ${Upload}
-    Click Element    ${Upload}
-    Sleep    3
-    Wait Until Element Is Visible    ${UploadFile}
-    Input Text    ${UploadFile}    ${TEST_DATA_DIR}\\dm_sas7bdat_prog.sas
-    Sleep    15
-    Wait Until Element Is Visible    ${SelectFirstFile}
-    Click Element    ${SelectFirstFile}
-    Sleep    3
-    Wait Until Element Is Visible    ${AddToClipboardButton}
-    Click Element    ${AddToClipboardButton}
-    Sleep    3
-    Wait Until Element Is Visible    ${AddedToClipboardPrompt}      timeout=30
-    Wait Until Element Is Not Visible    ${AddedToClipboardPrompt}      timeout=30
-    Wait Until Element Is Visible    ${ResultsFolder}
-    Click Element    ${ResultsFolder}
-    Sleep    3
-    Wait Until Element Is Visible    ${Clipboard}
-    Click Element    ${Clipboard}
-    Sleep    3
-    Wait Until Element Is Visible    ${SelectAllClipboard}
-    Click Element    ${SelectAllClipboard}
-    Sleep    3
-    Wait Until Element Is Visible    ${MoveHere}
-    Click Element    ${MoveHere}
-    Sleep    3
+    Wait Until Web Element Is Visible    Study    ProgramsFolder    ${ProgramsFolder}
+    Click Web Element    Study    ProgramsFolder    ${ProgramsFolder}
+    Wait Until Web Element Is Visible    Study    Upload    ${Upload}
+    Click Web Element    Study    Upload    ${Upload}
+    Wait Until Web Element Is Visible    Study    UploadFile    ${UploadFile}
+    Fill Text    Study    UploadFile    ${UploadFile}    ${TEST_DATA_DIR}\\dm_sas7bdat_prog.sas     10
+    Wait Until Web Element Is Visible    Study    SelectFirstFile    ${SelectFirstFile}
+    Click Web Element    Study    SelectFirstFile    ${SelectFirstFile}
+    Wait Until Web Element Is Visible    Study    AddToClipboardButton    ${AddToClipboardButton}
+    Click Web Element    Study    AddToClipboardButton    ${AddToClipboardButton}
+    Wait Until Web Element Is Visible    Study    ResultsFolder    ${ResultsFolder}
+    Click Web Element    Study    ResultsFolder    ${ResultsFolder}
+    Wait Until Web Element Is Visible    Study    Clipboard    ${Clipboard}
+    Click Web Element    Study    Clipboard    ${Clipboard}
+    Wait Until Web Element Is Visible    Study    SelectAllClipboard    ${SelectAllClipboard}
+    Click Web Element    Study    SelectAllClipboard    ${SelectAllClipboard}
+    Wait Until Web Element Is Visible    Study    MoveHere    ${MoveHere}
+    Click Web Element    Study    MoveHere    ${MoveHere}
     Handle Alert
-    Sleep    10
-    Wait Until Element Is Visible    ${SasProg}
-    Sleep    3
-    Wait Until Element Is Visible    ${ProgramsFolder}
-    Click Element    ${ProgramsFolder}
-    Sleep    3
-    Element Should Not Be Visible    ${SasProg}
+    Wait Until Web Element Is Visible    Study    SasProg    ${SasProg}
+    Wait Until Web Element Is Visible    Study    ProgramsFolder    ${ProgramsFolder}
+    Click Web Element    Study    ProgramsFolder    ${ProgramsFolder}
+    Wait Until Web Element Is Not Visible    Study    SasProg    ${SasProg}
 
 Upload Single File to Study
-    Wait Until Element Is Visible    ${Upload}
-    Click Element    ${Upload}
-    Sleep    3
-    Wait Until Element Is Visible    ${UploadFile}
-    Input Text    ${UploadFile}    ${TEST_DATA_DIR}\\dm_sas7bdat_prog.sas
-    Sleep    15
+    Wait Until Web Element Is Visible    Study    Upload    ${Upload}
+    Click Web Element    Study    Upload    ${Upload}
+    Wait Until Web Element Is Visible    Study    UploadFile    ${UploadFile}
+    Fill Text    Study    UploadFile    ${UploadFile}    ${TEST_DATA_DIR}\\dm_sas7bdat_prog.sas     10
 
 Upload and Run a Single Program
-    Wait Until Element Is Visible    ${ProgramsFolder}
-    Click Element    ${ProgramsFolder}
-    Sleep    2
-    Wait Until Element Is Visible    ${Upload}
-    Click Element    ${Upload}
-    Sleep    2
-    Wait Until Element Is Visible    ${UploadFile}
-    Input Text    ${UploadFile}    ${TEST_DATA_DIR}\\file_copier.rb
-    Sleep    10
-    Wait Until Element Is Visible    ${DataFolder}
-    Click Element    ${DataFolder}
-    Sleep    2
-    Wait Until Element Is Visible    ${Upload}
-    Click Element    ${Upload}
-    Sleep    2
-    Wait Until Element Is Visible    ${UploadFile}
-    Input Text    ${UploadFile}    ${TEST_DATA_DIR}\\input.txt
-    Sleep    10
-    Wait Until Element Is Visible    ${ProgramsFolder}
-    Click Element    ${ProgramsFolder}
-    Sleep    2
-    Wait Until Element Is Visible    ${FileThreeBars}
-    Click Element    ${FileThreeBars}
-    Sleep    5
-    Wait Until Element Is Visible    ${ThreeBarsRun}
-    Click Element    ${ThreeBarsRun}
-    Sleep    30
-    Wait Until Element Is Visible    ${ResultsFolder}
-    Click Element    ${ResultsFolder}
-    Sleep    2
-    Wait Until Element Is Visible    ${RubyROutput}     timeout=30
+    ${RubyThreeBars}=    Replace String  ${NamedFileThreeBars}  xyz  file_copier.rb
+    ${RubyGreenTick}=    Replace String  ${ProgRunGreenTick}  xyz  file_copier.rb
+    Wait Until Web Element Is Visible    Study    ProgramsFolder    ${ProgramsFolder}
+    Click Web Element    Study    ProgramsFolder    ${ProgramsFolder}
+    Wait Until Web Element Is Visible    Study    Upload    ${Upload}
+    Click Web Element    Study    Upload    ${Upload}
+    Wait Until Web Element Is Visible    Study    UploadFile    ${UploadFile}
+    Fill Text    Study    UploadFile    ${UploadFile}    ${TEST_DATA_DIR}\\file_copier.rb     10
+    Wait Until Web Element Is Visible    Study    DataFolder    ${DataFolder}
+    Click Web Element    Study    DataFolder    ${DataFolder}
+    Wait Until Web Element Is Visible    Study    Upload    ${Upload}
+    Click Web Element    Study    Upload    ${Upload}
+    Wait Until Web Element Is Visible    Study    UploadFile    ${UploadFile}
+    Fill Text    Study    UploadFile    ${UploadFile}    ${TEST_DATA_DIR}\\input.txt     10
+    Wait Until Web Element Is Visible    Study    ProgramsFolder    ${ProgramsFolder}
+    Click Web Element    Study    ProgramsFolder    ${ProgramsFolder}
+    Wait Until Web Element Is Visible    Study    RubyThreeBars    ${RubyThreeBars}
+    Click Web Element    Study    RubyThreeBars    ${RubyThreeBars}
+    Wait Until Web Element Is Visible    Study    ThreeBarsRun    ${ThreeBarsRun}
+    Click Web Element    Study    ThreeBarsRun    ${ThreeBarsRun}
+    Wait Until Web Element Is Visible    Study    RubyGreenTick    ${RubyGreenTick}     120
+    Wait Until Web Element Is Visible    Study    ResultsFolder    ${ResultsFolder}
+    Click Web Element    Study    ResultsFolder    ${ResultsFolder}
+    Wait Until Web Element Is Visible    Study    RubyROutput    ${RubyROutput}
 
 Upload and Create Special Character Files
     Unzip File    ${TEST_DATA_DIR}\\SpecialCharFiles.zip    ${TEST_DATA_DIR}

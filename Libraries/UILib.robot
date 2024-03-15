@@ -11,10 +11,16 @@ Open Browser And Maximize
     Sleep    ${timeS}
     
 Wait Until Web Element Is Visible
-    [Arguments]  ${page}  ${element}  ${locator}  ${stime}=${timeS}
+    [Arguments]  ${page}  ${element}  ${locator}  ${timeout}=30  ${stime}=${timeS}
     Log Many    Page=${page}  Element=${element}
     Sleep    ${stime}
-    Wait Until Element Is Visible    ${locator}    30
+    Wait Until Element Is Visible    ${locator}    ${timeout}
+
+Wait Until Web Element Is Not Visible
+    [Arguments]  ${page}  ${element}  ${locator}  ${timeout}=30  ${stime}=${timeS}
+    Log Many    Page=${page}  Element=${element}
+    Sleep    ${stime}
+    Wait Until Element Is Not Visible    ${locator}    ${timeout}
     
 Fill Text
     [Arguments]  ${page}  ${element}  ${locator}  ${text}  ${stime}=${timeS}
