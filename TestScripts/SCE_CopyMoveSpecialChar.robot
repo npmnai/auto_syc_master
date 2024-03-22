@@ -13,4 +13,3 @@ Upload and Copy and Move Special Character Files in Study
     Create New Study
     Create Base Folders in Study
     Upload and Copy and Move Special Character File
-    Create New Workspace

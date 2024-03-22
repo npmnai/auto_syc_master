@@ -458,249 +458,182 @@ Upload and Run a Single Program
 
 Upload and Create Special Character Files
     Unzip File    ${TEST_DATA_DIR}\\SpecialCharFiles.zip    ${TEST_DATA_DIR}
-    Wait Until Element Is Visible    ${DataFolder}
-    Click Element    ${DataFolder}
-    Sleep    2
-    Wait Until Element Is Visible    ${Upload}
-    Click Element    ${Upload}
-    Sleep    2
-    Wait Until Element Is Visible    ${UploadFile}
-    Input Text    ${UploadFile}    ${TEST_DATA_DIR}\\input.txt
-    Sleep    10
-    Wait Until Element Is Visible    ${Upload}
-    Click Element    ${Upload}
-    Sleep    2
-    Wait Until Element Is Visible    ${UploadFile}
-    Input Text    ${UploadFile}    ${TEST_DATA_DIR}\\Test~ @ # $ % ^ + = { } [ ] ; ,.txt
-    Sleep    10
-    Wait Until Element Is Visible    ${SpecialCharFileVerify}     timeout=30
-    Wait Until Element Is Visible    ${New}
-    Click Element    ${New}
-    Sleep    2
-    Wait Until Element Is Visible    ${CreateNewFile}
-    Click Element    ${CreateNewFile}
-    Sleep    3
-    Wait Until Element Is Visible    ${SaveFileButton}
-    Click Element    ${SaveFileButton}
-    Sleep    3
-    Wait Until Element Is Visible    ${InputFileName}
-    Click Element    ${InputFileName}
-    Sleep    1
-    Input Text    ${InputFileName}      test2Test~ @ # $ % ^ + = { } [ ] ; ,.txt
-    Sleep    2
-    Wait Until Element Is Visible    ${CreateFileButton}
-    Click Element    ${CreateFileButton}
-    Sleep    3
-    Wait Until Element Is Visible    ${DataFolder}
-    Click Element    ${DataFolder}
-    Sleep    2
-    Wait Until Element Is Visible    ${NewSpecialCharFileVerify}     timeout=30
-    Wait Until Element Is Visible    ${FileThreeBars}
-    Click Element    ${FileThreeBars}
-    Sleep    3
-    Wait Until Element Is Visible    ${ThreeBarsRename}
-    Click Element    ${ThreeBarsRename}
-    Sleep    3
-    Wait Until Element Is Visible    ${RenameInput}
-    Input Text    ${RenameInput}    Test {Space ~ @ # $ % ^ + = { } [ ] ; ,.txt\n
-    Sleep    2
-    Wait Until Element Is Visible    ${RenamedSpecialCharFileVerify}     timeout=30
+    Wait Until Web Element Is Visible    Study    DataFolder    ${DataFolder}
+    Click Web Element    Study    DataFolder    ${DataFolder}
+    Wait Until Web Element Is Visible    Study    Upload    ${Upload}
+    Click Web Element    Study    Upload    ${Upload}
+    Wait Until Web Element Is Visible    Study    UploadFile    ${UploadFile}
+    Fill Text    Study    UploadFile    ${UploadFile}    ${TEST_DATA_DIR}\\input.txt     10
+    Wait Until Web Element Is Visible    Study    Upload    ${Upload}
+    Click Web Element    Study    Upload    ${Upload}
+    Wait Until Web Element Is Visible    Study    UploadFile    ${UploadFile}
+    Fill Text    Study    UploadFile    ${UploadFile}    ${TEST_DATA_DIR}\\Test~ @ # $ % ^ + = { } [ ] ; ,.txt     10
+    Wait Until Web Element Is Visible    Study    SpecialCharFileVerify    ${SpecialCharFileVerify}
+    Wait Until Web Element Is Visible    Study    New    ${New}
+    Click Web Element    Study    New    ${New}
+    Wait Until Web Element Is Visible    Study    CreateNewFile    ${CreateNewFile}
+    Click Web Element    Study    CreateNewFile    ${CreateNewFile}
+    Wait Until Web Element Is Visible    Study    SaveFileButton    ${SaveFileButton}
+    Click Web Element    Study    SaveFileButton    ${SaveFileButton}
+    Wait Until Web Element Is Visible    Study    InputFileName    ${InputFileName}
+    Click Web Element    Study    InputFileName    ${InputFileName}
+    Fill Text    Study    InputFileName    ${InputFileName}      test2Test~ @ # $ % ^ + = { } [ ] ; ,.txt
+    Wait Until Web Element Is Visible    Study    CreateFileButton    ${CreateFileButton}
+    Click Web Element    Study    CreateFileButton    ${CreateFileButton}
+    Wait Until Web Element Is Visible    Study    DataFolder    ${DataFolder}
+    Click Web Element    Study    DataFolder    ${DataFolder}
+    Wait Until Web Element Is Visible    Study    NewSpecialCharFileVerify    ${NewSpecialCharFileVerify}
+    Wait Until Web Element Is Visible    Study    FileThreeBars    ${FileThreeBars}
+    Click Web Element    Study    FileThreeBars    ${FileThreeBars}
+    Wait Until Web Element Is Visible    Study    ThreeBarsRename    ${ThreeBarsRename}
+    Click Web Element    Study    ThreeBarsRename    ${ThreeBarsRename}
+    Wait Until Web Element Is Visible    Study    RenameInput    ${RenameInput}
+    Fill Text    Study    RenameInput    ${RenameInput}    Test {Space ~ @ # $ % ^ + = { } [ ] ; ,.txt\n
+    Wait Until Web Element Is Visible    Study    RenamedSpecialCharFileVerify    ${RenamedSpecialCharFileVerify}
 
 Upload and Run Special Character Program
     Unzip File    ${TEST_DATA_DIR}\\SpecialCharFiles.zip    ${TEST_DATA_DIR}
-    Wait Until Element Is Visible    ${DataFolder}
-    Click Element    ${DataFolder}
-    Sleep    2
-    Wait Until Element Is Visible    ${Upload}
-    Click Element    ${Upload}
-    Sleep    2
-    Wait Until Element Is Visible    ${UploadFile}
-    Input Text    ${UploadFile}    ${TEST_DATA_DIR}\\input!@#().txt
-    Sleep    10
-    Wait Until Element Is Visible    ${SpecialCharProgInputVerify}     timeout=30
-    Wait Until Element Is Visible    ${ProgramsFolder}
-    Click Element    ${ProgramsFolder}
-    Sleep    2
-    Wait Until Element Is Visible    ${Upload}
-    Click Element    ${Upload}
-    Sleep    2
-    Wait Until Element Is Visible    ${UploadFile}
-    Input Text    ${UploadFile}    ${TEST_DATA_DIR}\\rubyprogram!@#().rb
-    Sleep    10
-    Wait Until Element Is Visible    ${SpecialCharProgVerify}     timeout=30
-    Wait Until Element Is Visible    ${FileThreeBars}
-    Click Element    ${FileThreeBars}
-    Sleep    3
-    Wait Until Element Is Visible    ${ThreeBarsRun}
-    Click Element    ${ThreeBarsRun}
-    Sleep    30
-    Wait Until Element Is Visible    ${SpecialCharProgOutputVerify}     timeout=30
-    Wait Until Element Is Visible    ${SecondThreeBars}
-    Click Element    ${SecondThreeBars}
-    Sleep    3
-    Wait Until Element Is Visible    ${ThreeBarsHistory}
-    Click Element    ${ThreeBarsHistory}
-    Sleep    5
-    Wait Until Element Is Visible    ${SpecialCharProgVerify}
-    Click Element    ${SpecialCharProgVerify}
-    Wait Until Element Is Visible    ${OutputFileInReportVerify}        timeout=30
-    Sleep    2
-    Wait Until Element Is Visible    ${TraceabilityReportButton}
-    Click Element    ${TraceabilityReportButton}
-    Wait Until Element Is Visible    ${OutputFileInReportVerify}        timeout=30
-    Sleep    2
+    Wait Until Web Element Is Visible    Study    DataFolder    ${DataFolder}
+    Click Web Element    Study    DataFolder    ${DataFolder}
+    Wait Until Web Element Is Visible    Study    Upload    ${Upload}
+    Click Web Element    Study    Upload    ${Upload}
+    Wait Until Web Element Is Visible    Study    UploadFile    ${UploadFile}
+    Fill Text    Study    UploadFile    ${UploadFile}    ${TEST_DATA_DIR}\\input!@#().txt     10
+    Wait Until Web Element Is Visible    Study    SpecialCharProgInputVerify    ${SpecialCharProgInputVerify}
+    Wait Until Web Element Is Visible    Study    ProgramsFolder    ${ProgramsFolder}
+    Click Web Element    Study    ProgramsFolder    ${ProgramsFolder}
+    Wait Until Web Element Is Visible    Study    Upload    ${Upload}
+    Click Web Element    Study    Upload    ${Upload}
+    Wait Until Web Element Is Visible    Study    UploadFile    ${UploadFile}
+    Fill Text    Study    UploadFile    ${UploadFile}    ${TEST_DATA_DIR}\\rubyprogram!@#().rb     10
+    Wait Until Web Element Is Visible    Study    SpecialCharProgVerify    ${SpecialCharProgVerify}
+    ${RubyThreeBars}=    Replace String  ${NamedFileThreeBars}  xyz  rubyprogram!@#().rb
+    ${RubyGreenTick}=    Replace String  ${ProgRunGreenTick}  xyz  rubyprogram!@#().rb
+    Wait Until Web Element Is Visible    Study    RubyThreeBars    ${RubyThreeBars}
+    Click Web Element    Study    RubyThreeBars    ${RubyThreeBars}
+    Wait Until Web Element Is Visible    Study    ThreeBarsRun    ${ThreeBarsRun}
+    Click Web Element    Study    ThreeBarsRun    ${ThreeBarsRun}
+    Wait Until Web Element Is Visible    Study    RubyGreenTick    ${RubyGreenTick}     120
+    Wait Until Web Element Is Visible    Study    SpecialCharProgOutputVerify    ${SpecialCharProgOutputVerify}
+    Wait Until Web Element Is Visible    Study    RubyThreeBars    ${RubyThreeBars}
+    Click Web Element    Study    RubyThreeBars    ${RubyThreeBars}
+    Wait Until Web Element Is Visible    Study    ThreeBarsHistory    ${ThreeBarsHistory}
+    Click Web Element    Study    ThreeBarsHistory    ${ThreeBarsHistory}
+    Wait Until Web Element Is Visible    Study    SpecialCharProgVerify    ${SpecialCharProgVerify}
+    Click Web Element    Study    SpecialCharProgVerify    ${SpecialCharProgVerify}
+    Wait Until Web Element Is Visible    Study    OutputFileInReportVerify    ${OutputFileInReportVerify}
+    Wait Until Web Element Is Visible    Study    TraceabilityReportButton    ${TraceabilityReportButton}
+    Click Web Element    Study    TraceabilityReportButton    ${TraceabilityReportButton}
+    Wait Until Web Element Is Visible    Study    OutputFileInReportVerify    ${OutputFileInReportVerify}
 
 Upload and Copy and Move Special Character File
     Unzip File    ${TEST_DATA_DIR}\\SpecialCharFiles.zip    ${TEST_DATA_DIR}
-    Wait Until Element Is Visible    ${DataFolder}
-    Click Element    ${DataFolder}
-    Sleep    2
-    Wait Until Element Is Visible    ${Upload}
-    Click Element    ${Upload}
-    Sleep    2
-    Wait Until Element Is Visible    ${UploadFile}
-    Input Text    ${UploadFile}    ${TEST_DATA_DIR}\\Test~ @ # $ % ^ + = { } [ ] ; ,.txt
-    Sleep    10
-    Wait Until Element Is Visible    ${SpecialCharFileVerify}     timeout=30
-    Wait Until Element Is Visible    ${SelectFirstFile}
-    Click Element    ${SelectFirstFile}
-    Sleep    3
-    Wait Until Element Is Visible    ${AddToClipboardButton}
-    Click Element    ${AddToClipboardButton}
-    Sleep    3
-    Wait Until Element Is Visible    ${AddedToClipboardPrompt}      timeout=30
-    Wait Until Element Is Not Visible    ${AddedToClipboardPrompt}      timeout=30
-    Wait Until Element Is Visible    ${ResultsFolder}
-    Click Element    ${ResultsFolder}
-    Sleep    3
-    Wait Until Element Is Visible    ${Clipboard}
-    Click Element    ${Clipboard}
-    Sleep    3
-    Wait Until Element Is Visible    ${SelectAllClipboard}
-    Click Element    ${SelectAllClipboard}
-    Sleep    3
-    Wait Until Element Is Visible    ${PasteHere}
-    Click Element    ${PasteHere}
-    Sleep    5
-    Wait Until Element Is Visible    ${Clipboard}
-    Click Element    ${Clipboard}
-    Sleep    10
-    Wait Until Element Is Visible    ${SpecialCharFileVerify}     timeout=30
-    Wait Until Element Is Visible    ${DocumentsFolder}
-    Click Element    ${DocumentsFolder}
-    Sleep    3
-    Wait Until Element Is Visible    ${Clipboard}
-    Click Element    ${Clipboard}
-    Sleep    3
-    Wait Until Element Is Visible    ${SelectAllClipboard}
-    Click Element    ${SelectAllClipboard}
-    Sleep    3
-    Wait Until Element Is Visible    ${MoveHere}
-    Click Element    ${MoveHere}
-    Sleep    3
+    Wait Until Web Element Is Visible    Study    DataFolder    ${DataFolder}
+    Click Web Element    Study    DataFolder    ${DataFolder}
+    Wait Until Web Element Is Visible    Study    Upload    ${Upload}
+    Click Web Element    Study    Upload    ${Upload}
+    Wait Until Web Element Is Visible    Study    UploadFile    ${UploadFile}
+    Fill Text    Study    UploadFile    ${UploadFile}    ${TEST_DATA_DIR}\\Test~ @ # $ % ^ + = { } [ ] ; ,.txt     10
+    Wait Until Web Element Is Visible    Study    SpecialCharFileVerify    ${SpecialCharFileVerify}
+    Wait Until Web Element Is Visible    Study    SelectFirstFile    ${SelectFirstFile}
+    Click Web Element    Study    SelectFirstFile    ${SelectFirstFile}
+    Wait Until Web Element Is Visible    Study    AddToClipboardButton    ${AddToClipboardButton}
+    Click Web Element    Study    AddToClipboardButton    ${AddToClipboardButton}
+    Wait Until Web Element Is Visible    Study    ResultsFolder    ${ResultsFolder}
+    Click Web Element    Study    ResultsFolder    ${ResultsFolder}
+    Wait Until Web Element Is Visible    Study    Clipboard    ${Clipboard}
+    Click Web Element    Study    Clipboard    ${Clipboard}
+    Wait Until Web Element Is Visible    Study    SelectAllClipboard    ${SelectAllClipboard}
+    Click Web Element    Study    SelectAllClipboard    ${SelectAllClipboard}
+    Wait Until Web Element Is Visible    Study    PasteHere    ${PasteHere}
+    Click Web Element    Study    PasteHere    ${PasteHere}
+    Wait Until Web Element Is Visible    Study    Clipboard    ${Clipboard}
+    Click Web Element    Study    Clipboard    ${Clipboard}
+    Wait Until Web Element Is Visible    Study    SpecialCharFileVerify    ${SpecialCharFileVerify}
+    Wait Until Web Element Is Visible    Study    DocumentsFolder    ${DocumentsFolder}
+    Click Web Element    Study    DocumentsFolder    ${DocumentsFolder}
+    Wait Until Web Element Is Visible    Study    Clipboard    ${Clipboard}
+    Click Web Element    Study    Clipboard    ${Clipboard}
+    Wait Until Web Element Is Visible    Study    SelectAllClipboard    ${SelectAllClipboard}
+    Click Web Element    Study    SelectAllClipboard    ${SelectAllClipboard}
+    Wait Until Web Element Is Visible    Study    MoveHere    ${MoveHere}
+    Click Web Element    Study    MoveHere    ${MoveHere}
     Handle Alert
-    Sleep    10
-    Wait Until Element Is Visible    ${SpecialCharFileVerify}     timeout=30
-    Wait Until Element Is Visible    ${DataFolder}
-    Click Element    ${DataFolder}
-    Sleep    2
-    Element Should Not Be Visible    ${SpecialCharFileVerify}
+    Wait Until Web Element Is Visible    Study    SpecialCharFileVerify    ${SpecialCharFileVerify}
+    Wait Until Web Element Is Visible    Study    DataFolder    ${DataFolder}
+    Click Web Element    Study    DataFolder    ${DataFolder}
+    Wait Until Web Element Is Not Visible    Study    SpecialCharFileVerify    ${SpecialCharFileVerify}
 
 Upload all Special Char Files
     Unzip File    ${TEST_DATA_DIR}\\SpecialCharFiles.zip    ${TEST_DATA_DIR}
-    Wait Until Element Is Visible    ${DataFolder}
-    Click Element    ${DataFolder}
-    Sleep    2
-    Wait Until Element Is Visible    ${Upload}
-    Click Element    ${Upload}
-    Sleep    2
-    Wait Until Element Is Visible    ${UploadFile}
-    Input Text    ${UploadFile}    ${TEST_DATA_DIR}\\Test~ @ # $ % ^ + = { } [ ] ; ,.txt
-    Sleep    10
-    Wait Until Element Is Visible    ${SpecialCharFileVerify}     timeout=30
-    Wait Until Element Is Visible    ${New}
-    Click Element    ${New}
-    Sleep    2
-    Wait Until Element Is Visible    ${CreateNewFile}
-    Click Element    ${CreateNewFile}
-    Sleep    3
-    Wait Until Element Is Visible    ${SaveFileButton}
-    Click Element    ${SaveFileButton}
-    Sleep    3
-    Wait Until Element Is Visible    ${InputFileName}
-    Click Element    ${InputFileName}
-    Sleep    1
-    Input Text    ${InputFileName}      test2Test~ @ # $ % ^ + = { } [ ] ; ,.txt
-    Sleep    2
-    Wait Until Element Is Visible    ${CreateFileButton}
-    Click Element    ${CreateFileButton}
-    Sleep    3
-    Wait Until Element Is Visible    ${DataFolder}
-    Click Element    ${DataFolder}
-    Sleep    2
-    Wait Until Element Is Visible    ${NewSpecialCharFileVerify}     timeout=30
+    Wait Until Web Element Is Visible    Study    DataFolder    ${DataFolder}
+    Click Web Element    Study    DataFolder    ${DataFolder}
+    Wait Until Web Element Is Visible    Study    Upload    ${Upload}
+    Click Web Element    Study    Upload    ${Upload}
+    Wait Until Web Element Is Visible    Study    UploadFile    ${UploadFile}
+    Fill Text    Study    UploadFile    ${UploadFile}    ${TEST_DATA_DIR}\\Test~ @ # $ % ^ + = { } [ ] ; ,.txt     10
+    Wait Until Web Element Is Visible    Study    SpecialCharFileVerify    ${SpecialCharFileVerify}
+    Wait Until Web Element Is Visible    Study    New    ${New}
+    Click Web Element    Study    New    ${New}
+    Wait Until Web Element Is Visible    Study    CreateNewFile    ${CreateNewFile}
+    Click Web Element    Study    CreateNewFile    ${CreateNewFile}
+    Wait Until Web Element Is Visible    Study    SaveFileButton    ${SaveFileButton}
+    Click Web Element    Study    SaveFileButton    ${SaveFileButton}
+    Wait Until Web Element Is Visible    Study    InputFileName    ${InputFileName}
+    Click Web Element    Study    InputFileName    ${InputFileName}
+    Fill Text    Study    InputFileName    ${InputFileName}      test2Test~ @ # $ % ^ + = { } [ ] ; ,.txt
+    Wait Until Web Element Is Visible    Study    CreateFileButton    ${CreateFileButton}
+    Click Web Element    Study    CreateFileButton    ${CreateFileButton}
+    Wait Until Web Element Is Visible    Study    DataFolder    ${DataFolder}
+    Click Web Element    Study    DataFolder    ${DataFolder}
+    Wait Until Web Element Is Visible    Study    NewSpecialCharFileVerify    ${NewSpecialCharFileVerify}
 
 Create Batch and Add Programs
-    Wait Until Element Is Visible    ${ProgramsFolder}
-    Click Element    ${ProgramsFolder}
-    Sleep    3
-    Wait Until Element Is Visible    ${ManageButton}
-    Click Element    ${ManageButton}
-    Sleep    3
-    Wait Until Element Is Visible    ${BatchesButton}
-    Click Element    ${BatchesButton}
-    Sleep    3
-    Wait Until Element Is Visible    ${CreateBatchButton}
-    Click Element    ${CreateBatchButton}
-    Sleep    3
-    Wait Until Element Is Visible    ${InputBatchName}
-    Click Element    ${InputBatchName}
-    Sleep    1
-    Input Text    ${InputBatchName}    batch1
-    Sleep    2
+    Wait Until Web Element Is Visible    Study    ProgramsFolder    ${ProgramsFolder}
+    Click Web Element    Study    ProgramsFolder    ${ProgramsFolder}
+    Wait Until Web Element Is Visible    Study    ManageButton    ${ManageButton}
+    Click Web Element    Study    ManageButton    ${ManageButton}
+    Wait Until Web Element Is Visible    Study    BatchesButton    ${BatchesButton}
+    Click Web Element    Study    BatchesButton    ${BatchesButton}
+    Wait Until Web Element Is Visible    Study    CreateBatchButton    ${CreateBatchButton}
+    Click Web Element    Study    CreateBatchButton    ${CreateBatchButton}
+    Wait Until Web Element Is Visible    Study    InputBatchName    ${InputBatchName}
+    Click Web Element    Study    InputBatchName    ${InputBatchName}
+    Fill Text    Study    InputBatchName    ${InputBatchName}    batch1
+
     ${PythonProgInList}=    Replace String  ${ProgInList}  xyz  pythonSecureExecution.py
     ${RubyProgInList}=    Replace String  ${ProgInList}  xyz  file_copier.rb
     ${RProgInList}=    Replace String  ${ProgInList}  xyz  R.r
     ${SasProgInList}=    Replace String  ${ProgInList}  xyz  dm_sas7bdat_prog.sas
-#    Wait Until Element Is Visible    ${BatchProgramSelect}
-#    Click Element    ${BatchProgramSelect}
-#    Sleep    2
-#    Wait Until Element Is Visible    ${PythonProgInList}
-#    Click Element    ${PythonProgInList}
-#    Sleep    2
-    Wait Until Element Is Visible    ${BatchProgramSelect}
-    Click Element    ${BatchProgramSelect}
-    Sleep    2
-    Wait Until Element Is Visible    ${RubyProgInList}
-    Click Element    ${RubyProgInList}
-    Sleep    2
-    Wait Until Element Is Visible    ${BatchProgramSelect}
-    Click Element    ${BatchProgramSelect}
-    Sleep    2
-    Wait Until Element Is Visible    ${RProgInList}
-    Click Element    ${RProgInList}
-    Sleep    2
-#    Wait Until Element Is Visible    ${BatchProgramSelect}
-#    Click Element    ${BatchProgramSelect}
-#    Sleep    2
-#    Wait Until Element Is Visible    ${SasProgInList}
-#    Click Element    ${SasProgInList}
-#    Sleep    2
+#    Wait Until Web Element Is Visible    Study    BatchProgramSelect    ${BatchProgramSelect}
+#    Click Web Element    Study    BatchProgramSelect    ${BatchProgramSelect}
+#    Wait Until Web Element Is Visible    Study    PythonProgInList    ${PythonProgInList}
+#    Click Web Element    Study    PythonProgInList    ${PythonProgInList}
+    Wait Until Web Element Is Visible    Study    BatchProgramSelect    ${BatchProgramSelect}
+    Click Web Element    Study    BatchProgramSelect    ${BatchProgramSelect}
+    Wait Until Web Element Is Visible    Study    RubyProgInList    ${RubyProgInList}
+    Click Web Element    Study    RubyProgInList    ${RubyProgInList}
+    Wait Until Web Element Is Visible    Study    BatchProgramSelect    ${BatchProgramSelect}
+    Click Web Element    Study    BatchProgramSelect    ${BatchProgramSelect}
+    Wait Until Web Element Is Visible    Study    RProgInList    ${RProgInList}
+    Click Web Element    Study    RProgInList    ${RProgInList}
+#    Wait Until Web Element Is Visible    Study    BatchProgramSelect    ${BatchProgramSelect}
+#    Click Web Element    Study    BatchProgramSelect    ${BatchProgramSelect}
+#    Wait Until Web Element Is Visible    Study    SasProgInList    ${SasProgInList}
+#    Click Web Element    Study    SasProgInList    ${SasProgInList}
 
-    Wait Until Element Is Visible    ${ConfirmCreateBatch}
-    Click Element    ${ConfirmCreateBatch}
-    Wait Until Element Is Visible    ${BatchConfirmationPrompt}     timeout=30
-    Sleep    3
+    Wait Until Web Element Is Visible    Study    ConfirmCreateBatch    ${ConfirmCreateBatch}
+    Click Web Element    Study    ConfirmCreateBatch    ${ConfirmCreateBatch}
+    Wait Until Web Element Is Visible    Study    BatchConfirmationPrompt    ${BatchConfirmationPrompt}
 
-#    ${PythonProgInBatch}=    Replace String  ${ProgInBatch}  xyz  pythonSecureExecution.py
+    ${PythonProgInBatch}=    Replace String  ${ProgInBatch}  xyz  pythonSecureExecution.py
     ${RubyProgInBatch}=    Replace String  ${ProgInBatch}  xyz  file_copier.rb
     ${RProgInBatch}=    Replace String  ${ProgInBatch}  xyz  R.r
-#    ${SasProgInBatch}=    Replace String  ${ProgInBatch}  xyz  dm_sas7bdat_prog.sas
-#    Element Should Be Visible    ${PythonProgInBatch}
-    Element Should Be Visible    ${RubyProgInBatch}
-    Element Should Be Visible    ${RProgInBatch}
-#    Element Should Be Visible    ${SasProgInBatch}
-    Sleep    3
+    ${SasProgInBatch}=    Replace String  ${ProgInBatch}  xyz  dm_sas7bdat_prog.sas
+    Wait Until Web Element Is Visible    Study    RubyProgInBatch    ${RubyProgInBatch}
+    Wait Until Web Element Is Visible    Study    RProgInBatch    ${RProgInBatch}
+#    Wait Until Web Element Is Visible    Study    PythonProgInBatch    ${PythonProgInBatch}
+#    Wait Until Web Element Is Visible    Study    SasProgInBatch    ${SasProgInBatch}
 
 #    Wait Until Element Is Visible    ${BatchProgramSelect}
 #    Click Element    ${BatchProgramSelect}
@@ -736,39 +669,36 @@ Create Batch and Add Programs
 #    Sleep    2
 
 Run Batch
-    Wait Until Element Is Visible    ${ProgramsFolder}
-    Click Element    ${ProgramsFolder}
-    Sleep    3
-    Wait Until Element Is Visible    ${LastThreeBars}
-    Click Element    ${LastThreeBars}
-    Sleep    3
-    Wait Until Element Is Visible    ${ThreeBarsRun}
-    Click Element    ${ThreeBarsRun}
-    Sleep    3
-    Wait Until Element Is Visible    ${LastThreeBars}
-    Click Element    ${LastThreeBars}
-    Sleep    3
-    Sleep    10
-    Wait Until Element Is Visible    ${LastThreeBars}
-    Click Element    ${LastThreeBars}
-    Sleep    3
-    Wait Until Element Is Visible    ${ThreeBarsRun}
-    Click Element    ${ThreeBarsRun}
-    Wait Until Element Is Visible    ${BatchRunConfirmPrompt}        timeout=30
+    Wait Until Web Element Is Visible    Study    ProgramsFolder    ${ProgramsFolder}
+    Click Web Element    Study    ProgramsFolder    ${ProgramsFolder}
+    Wait Until Web Element Is Visible    Study    LastThreeBars    ${LastThreeBars}
+    Click Web Element    Study    LastThreeBars    ${LastThreeBars}
+    Wait Until Web Element Is Visible    Study    ThreeBarsRun    ${ThreeBarsRun}
+    Click Web Element    Study    ThreeBarsRun    ${ThreeBarsRun}
+    Wait Until Web Element Is Visible    Study    LastThreeBars    ${LastThreeBars}
+    Click Web Element    Study    LastThreeBars    ${LastThreeBars}
+#    Wait Until Web Element Is Visible    Study    LastThreeBars    ${LastThreeBars}
+#    Click Web Element    Study    LastThreeBars    ${LastThreeBars}
+#    Wait Until Web Element Is Visible    Study    ThreeBarsRun    ${ThreeBarsRun}
+#    Click Web Element    Study    ThreeBarsRun    ${ThreeBarsRun}
+#    Wait Until Web Element Is Visible    Study    BatchRunConfirmPrompt    ${BatchRunConfirmPrompt}
+
     ${RGreenTick}=    Replace String  ${ProgRunGreenTick}  xyz  R.r
     ${RubyGreenTick}=    Replace String  ${ProgRunGreenTick}  xyz  file_copier.rb
-    Element Should Be Visible    ${RGreenTick}
-    Element Should Be Visible    ${RubyGreenTick}
-    Wait Until Element Is Visible    ${LastThreeBars}
-    Click Element    ${LastThreeBars}
-    Sleep    3
-    Wait Until Element Is Visible    ${LastThreeBars}
-    Click Element    ${LastThreeBars}
-    Sleep    3
-    Wait Until Element Is Visible    ${ThreeBarsHistory}
-    Click Element    ${ThreeBarsHistory}
-    Wait Until Element Is Visible    ${OkPromptInHistory}        timeout=30
-    Sleep    3
+    ${SasGreenTick}=    Replace String  ${ProgRunGreenTick}  xyz  dm_sas7bdat_prog.sas
+    ${PythonGreenTick}=    Replace String  ${ProgRunGreenTick}  xyz  pythonSecureExecution.py
+    Wait Until Web Element Is Visible    Study    RGreenTick    ${RGreenTick}     120
+    Wait Until Web Element Is Visible    Study    RubyGreenTick    ${RubyGreenTick}     120
+#    Wait Until Web Element Is Visible    Study    PythonGreenTick    ${PythonGreenTick}      120
+#    Wait Until Web Element Is Visible    Study    SasGreenTick    ${SasGreenTick}      120
+
+#    Wait Until Web Element Is Visible    Study    LastThreeBars    ${LastThreeBars}
+#    Click Web Element    Study    LastThreeBars    ${LastThreeBars}
+    Wait Until Web Element Is Visible    Study    LastThreeBars    ${LastThreeBars}
+    Click Web Element    Study    LastThreeBars    ${LastThreeBars}
+    Wait Until Web Element Is Visible    Study    ThreeBarsHistory    ${ThreeBarsHistory}
+    Click Web Element    Study    ThreeBarsHistory    ${ThreeBarsHistory}
+    Wait Until Web Element Is Visible    Study    OkPromptInHistory    ${OkPromptInHistory}
 
 Run Data Migration
     Wait Until Element Is Visible    ${SCELogo}
