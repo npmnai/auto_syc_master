@@ -159,6 +159,76 @@ Create New Study From Template
     Click Web Element    CreateStudy    CreateStudyButton    ${CreateStudy}
     Wait Until Web Element Is Visible    CreateStudy    StudyRequest    ${StudyRequest}
 
+Create New Library
+    Wait Until Web Element Is Visible    Default    SCELogo    ${SCELogo}
+    Click Web Element    Default    SCELogo    ${SCELogo}
+    Wait Until Web Element Is Visible    Home    New    ${New}
+    Click Web Element    Home    New    ${New}
+    Wait Until Web Element Is Visible    Home    NewLibrary    ${NewLibrary}
+    Click Web Element    Home    NewLibrary    ${NewLibrary}
+    @{list} =    Get Name And Desc      library
+    ${LibraryData} =  Set Variable    ${list}[0]
+    Set Suite Variable    ${LibraryData}
+    Wait Until Web Element Is Visible    CreateLibrary    LibraryNumber    ${StudyNumber}
+    Fill Text    CreateLibrary    LibraryNumber    ${StudyNumber}    ${LibraryData}
+    Wait Until Web Element Is Visible    CreateLibrary    LibraryName    ${StudyName}
+    Fill Text    CreateLibrary    LibraryName    ${StudyName}    ${LibraryData}
+    Wait Until Web Element Is Visible    CreateLibrary    LibraryTitle    ${StudyTitle}
+    Fill Text    CreateLibrary    LibraryTitle    ${StudyTitle}    ${LibraryData}
+    Wait Until Web Element Is Visible    CreateLibrary    CreateLibraryButton    ${CreateStudy}
+    Click Web Element    CreateLibrary    CreateLibraryButton    ${CreateStudy}
+    Wait Until Web Element Is Visible    Library    LibraryConfirmed    ${LibraryConfirmed}
+
+Create New Project From Library
+    Wait Until Web Element Is Visible    Default    SCELogo    ${SCELogo}
+    Click Web Element    Default    SCELogo    ${SCELogo}
+    Wait Until Web Element Is Visible    Home    New    ${New}
+    Click Web Element    Home    New    ${New}
+    Wait Until Web Element Is Visible    Home    NewProject    ${NewProject}
+    Click Web Element    Home    NewProject    ${NewProject}
+    @{list} =    Get Name And Desc      project
+    ${ProjectData} =  Set Variable    ${list}[0]
+    Set Suite Variable    ${ProjectData}
+    Wait Until Web Element Is Visible    CreateProject    LibProjButton    ${LibProjButton}
+    Click Web Element    CreateProject    LibProjButton    ${LibProjButton}
+    Wait Until Web Element Is Visible    CreateProject    LibrarySearch    ${StudySearch}
+    Fill Text    CreateProject    LibrarySearch    ${StudySearch}    ${LibraryData}\n
+    Wait Until Web Element Is Visible    CreateProject    ProjectNumber    ${StudyNumber}
+    Fill Text    CreateProject    ProjectNumber    ${StudyNumber}    ${ProjectData}
+    Wait Until Web Element Is Visible    CreateProject    ProjectName    ${StudyName}
+    Fill Text    CreateProject    ProjectName    ${StudyName}    ${ProjectData}
+    Wait Until Web Element Is Visible    CreateProject    ProjectTitle    ${StudyTitle}
+    Fill Text    CreateProject    ProjectTitle    ${StudyTitle}    ${ProjectData}
+    Wait Until Web Element Is Visible    CreateProject    CreateProjectButton    ${CreateStudy}
+    Click Web Element    CreateProject    CreateProjectButton    ${CreateStudy}
+    Wait Until Web Element Is Visible    Project    ProjectConfirmed    ${ProjectConfirmed}
+
+Create New Study From Project
+    Wait Until Web Element Is Visible    Study    SCELogo    ${SCELogo}
+    Click Web Element    Study    SCELogo    ${SCELogo}
+    Wait Until Web Element Is Visible    Home    New    ${New}
+    Click Web Element    Home    New    ${New}
+    Wait Until Web Element Is Visible    Home    NewStudy    ${NewStudy}
+    Click Web Element    Home    NewStudy    ${NewStudy}
+    @{list} =    Get Name And Desc      study
+    ${StudyData} =  Set Variable    ${list}[0]
+    Set Suite Variable    ${StudyData}
+    Wait Until Web Element Is Visible    CreateStudy    LibProjButton    ${LibProjButton}
+    Click Web Element    CreateStudy    LibProjButton    ${LibProjButton}
+    Wait Until Web Element Is Visible    CreateStudy    ProjectSearch    ${StudySearch}
+    Fill Text    CreateStudy    ProjectSearch    ${StudySearch}    ${ProjectData}\n
+    Wait Until Web Element Is Visible    CreateStudy    StudyNumber    ${StudyNumber}
+    Fill Text    CreateStudy    StudyNumber    ${StudyNumber}    ${StudyData}
+    Wait Until Web Element Is Visible    CreateStudy    StudyName    ${StudyName}
+    Fill Text    CreateStudy    StudyName    ${StudyName}    ${StudyData}
+    Wait Until Web Element Is Visible    CreateStudy    StudyTitle    ${StudyTitle}
+    Fill Text    CreateStudy    StudyTitle    ${StudyTitle}    ${StudyData}
+    Wait Until Web Element Is Visible    CreateStudy    CreateStudyButton    ${CreateStudy}
+    Click Web Element    CreateStudy    CreateStudyButton    ${CreateStudy}
+    Wait Until Web Element Is Visible    Study    StudyConfirmed    ${StudyConfirmed}
+    Wait Until Web Element Is Visible    Study    RootFolders    ${RootFolders}
+    Click Web Element    Study    RootFolders    ${RootFolders}
+
 Create New Study
     Wait Until Web Element Is Visible    Default    SCELogo    ${SCELogo}
     Click Web Element    Default    SCELogo    ${SCELogo}
