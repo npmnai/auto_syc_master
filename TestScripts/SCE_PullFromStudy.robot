@@ -13,4 +13,3 @@ Create Workspace and Make Changes and Pull from Study
     Create New Study
     Create New Workspace
     Make Change to Study and Pull to Workspace
-    Logout of SCE Application

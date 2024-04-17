@@ -14,4 +14,3 @@ Create Workspace and Make Changes and Merge to Study
     Create New Study
     Create New Workspace
     Make Change to Workspace and Merge to Study
-    Logout of SCE Application

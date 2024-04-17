@@ -15,4 +15,3 @@ Upload Programs to Study and Create Workspace and Compute Dependencies
     Upload Programs to Study for Dependency Check
     Create New Workspace
     Compute Dependencies
-    Logout of SCE Application

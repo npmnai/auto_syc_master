@@ -13,69 +13,52 @@ Variables  ../SCE_PageLocators/SCELocatorsGlobalRoles.py
 Variables  ../SCE_PageLocators/SCELocatorsWorkflowModuleCheck.py
 Variables  ../SCE_PageLocators/SCELocatorsWorkflow.py
 Variables  ../SCE_PageLocators/SCELocatorsTasks.py
+Resource    ../Libraries/UILib.robot
 
 *** Keywords ***
 Create New Task
-    Wait Until Element Is Visible    ${TasksButton}
-    Click Element    ${TasksButton}
-    Sleep    3
-    Wait Until Element Is Visible    ${New}
-    Click Element    ${New}
-    Sleep    3
-    Wait Until Element Is Visible    ${NewTask}
-    Click Element    ${NewTask}
-    Sleep    3
+    Wait Until Web Element Is Visible    Study    TasksButton    ${TasksButton}
+    Click Web Element    Study    TasksButton    ${TasksButton}
+    Wait Until Web Element Is Visible    Tasks    New    ${New}
+    Click Web Element    Tasks    New     ${New}
+    Wait Until Web Element Is Visible    Tasks    NewTask     ${NewTask}
+    Click Web Element    Tasks    NewTask     ${NewTask}
     @{list} =    Get Name And Desc      task
     ${TaskName} =  Set Variable    ${list}[0]
-    Wait Until Element Is Visible    ${TaskNameInput}
-    Click Element    ${TaskNameInput}
-    Sleep    1
-    Input Text    ${TaskNameInput}    ${TaskName}
-    Sleep    3
-    Wait Until Element Is Visible    ${WorkflowSelect}
-    Click Element    ${WorkflowSelect}
-    Sleep    3
-    Wait Until Element Is Visible    ${TasksSelectSearchTextInput}
-    Click Element    ${TasksSelectSearchTextInput}
-    Sleep    1
-    Input Text    ${TasksSelectSearchTextInput}    ${WorkflowNameArg}\n
-    Sleep    3
-    Wait Until Element Is Visible    ${CreateButton}
-    Click Element    ${CreateButton}
-    Wait Until Element Is Visible    ${TaskCreatedPrompt}       timeout=30
+    Wait Until Web Element Is Visible    Tasks    TaskNameInput     ${TaskNameInput}
+    Click Web Element    Tasks    TaskNameInput     ${TaskNameInput}
+    Fill Text    Tasks    TaskNameInput     ${TaskNameInput}    ${TaskName}
+    Wait Until Web Element Is Visible    Tasks    WorkflowSelect     ${WorkflowSelect}
+    Click Web Element    Tasks    WorkflowSelect     ${WorkflowSelect}
+    Wait Until Web Element Is Visible    Tasks    TasksSelectSearchTextInput     ${TasksSelectSearchTextInput}
+    Click Web Element    Tasks    TasksSelectSearchTextInput     ${TasksSelectSearchTextInput}
+    Fill Text    Tasks    TasksSelectSearchTextInput     ${TasksSelectSearchTextInput}    ${WorkflowNameArg}\n
+    Wait Until Web Element Is Visible    Tasks    CreateButton     ${CreateButton}
+    Click Web Element    Tasks    CreateButton     ${CreateButton}
+    Wait Until Web Element Is Visible    Tasks    TaskCreatedPrompt     ${TaskCreatedPrompt}
 
 Assign Programs To Task
-    Wait Until Element Is Visible    ${ListedTask}
-    Click Element    ${ListedTask}
-    Sleep    3
-    Wait Until Element Is Visible    ${ProgsPage}
-    Click Element    ${ProgsPage}
-    Sleep    3
-    Wait Until Element Is Visible    ${ProgPathInput}
-    Click Element    ${ProgPathInput}
-    Sleep    1
-    Input Text    ${ProgPathInput}    file
-    Sleep    3
+    Wait Until Web Element Is Visible    Tasks    ListedTask     ${ListedTask}
+    Click Web Element    Tasks    ListedTask     ${ListedTask}
+    Wait Until Web Element Is Visible    Tasks    ProgsPage     ${ProgsPage}
+    Click Web Element    Tasks    ProgsPage     ${ProgsPage}
+    Wait Until Web Element Is Visible    Tasks    ProgPathInput     ${ProgPathInput}
+    Click Web Element    Tasks    ProgPathInput     ${ProgPathInput}
+    Fill Text    Tasks    ProgPathInput     ${ProgPathInput}    file
     Press Keys    None    ARROW_DOWN
     Sleep    2
     Press Keys    None    ENTER
-    Sleep    3
-    Wait Until Element Is Visible    ${OutputPathInput}
-    Click Element    ${OutputPathInput}
-    Sleep    1
-    Input Text    ${OutputPathInput}    output
-    Sleep    3
+    Wait Until Web Element Is Visible    Tasks    OutputPathInput     ${OutputPathInput}
+    Click Web Element    Tasks    OutputPathInput     ${OutputPathInput}
+    Fill Text    Tasks    OutputPathInput     ${OutputPathInput}    output
     Press Keys    None    ARROW_DOWN
     Sleep    2
     Press Keys    None    ENTER
-    Sleep    3
-    Wait Until Element Is Visible    ${SaveButton}
-    Click Element    ${SaveButton}
-    Wait Until Element Is Visible    ${TrackUpdatedPrompt}      timeout=30
-    Wait Until Element Is Visible    ${CloseTaskButton}
-    Click Element    ${CloseTaskButton}
-    Sleep    3
-    Wait Until Element Is Visible    ${ListedTask}
-    Click Element    ${ListedTask}
-    Sleep    3
-    Wait Until Element Is Visible    ${ProgAssignVerify}    timeout=30
+    Wait Until Web Element Is Visible    Tasks    SaveButton     ${SaveButton}
+    Click Web Element    Tasks    SaveButton     ${SaveButton}
+    Wait Until Web Element Is Visible    Tasks    TrackUpdatedPrompt     ${TrackUpdatedPrompt}
+    Wait Until Web Element Is Visible    Tasks    CloseTaskButton     ${CloseTaskButton}
+    Click Web Element    Tasks    CloseTaskButton     ${CloseTaskButton}
+    Wait Until Web Element Is Visible    Tasks    ListedTask     ${ListedTask}
+    Click Web Element    Tasks    ListedTask     ${ListedTask}
+    Wait Until Web Element Is Visible    Tasks    ProgAssignVerify     ${ProgAssignVerify}

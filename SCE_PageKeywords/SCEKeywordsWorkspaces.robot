@@ -8,30 +8,25 @@ Variables  ../SCE_PageLocators/SCELocatorsStudies.py
 Variables  ../SCE_PageLocators/SCELocatorsUserAccess.py
 Variables  ../SCE_PageLocators/SCELocatorsAppFolders.py
 Variables  ../SCE_PageLocators/SCELocatorsWorkspaces.py
+Resource    ../Libraries/UILib.robot
 
 *** Keywords ***
 
 Create New Workspace
-    Wait Until Element Is Visible    ${RootFolders}
-    Click Element    ${RootFolders}
-    Sleep    2
-    Wait Until Element Is Visible    ${Workspaces}
-    Click Element    ${Workspaces}
-    Sleep    3
-    Wait Until Element Is Visible    ${NewWorkspace}
-    Click Element    ${NewWorkspace}
-    Sleep    5
-    Wait Until Element Is Visible    ${WorkspaceNameInput}
-    Input Text    ${WorkspaceNameInput}    -wks1
-    Sleep    2
-    Wait Until Element Is Visible    ${CreateWorkspace}
-    Click Element    ${CreateWorkspace}
-    Wait Until Element Is Visible    ${WorkspaceConfirmation}
-    Wait Until Element Is Not Visible    ${WorkspaceConfirmation}       timeout=30
-    Sleep    3
-    Wait Until Element Is Visible    ${RootFolders}
-    Click Element    ${RootFolders}
-    Sleep    5
+    Wait Until Web Element Is Visible    Study    RootFolders    ${RootFolders}
+    Click Web Element    Study    RootFolders    ${RootFolders}
+    Wait Until Web Element Is Visible    Study    Workspaces    ${Workspaces}
+    Click Web Element    Study    Workspaces    ${Workspaces}
+    Wait Until Web Element Is Visible    Study    NewWorkspace    ${NewWorkspace}
+    Click Web Element    Study    NewWorkspace    ${NewWorkspace}
+    Wait Until Web Element Is Visible    CreateWorkspace    WorkspaceNameInput    ${WorkspaceNameInput}
+    Fill Text    CreateWorkspace    WorkspaceNameInput    ${WorkspaceNameInput}    -wks1
+    Wait Until Web Element Is Visible    CreateWorkspace    CreateWorkspace    ${CreateWorkspace}
+    Click Web Element    CreateWorkspace    CreateWorkspace    ${CreateWorkspace}
+    Wait Until Web Element Is Visible    Workspace    WorkspaceConfirmation    ${WorkspaceConfirmation}
+    Wait Until Web Element Is Not Visible    Workspace    WorkspaceConfirmation    ${WorkspaceConfirmation}
+    Wait Until Web Element Is Visible    Workspace    RootFolders    ${RootFolders}
+    Click Web Element    Workspace    RootFolders    ${RootFolders}
 #    Wait Until Element Is Visible    ${Workspaces}
 #    Click Element    ${Workspaces}
 #    Sleep    2
@@ -44,208 +39,159 @@ Create New Workspace
 #    Sleep    5
 
 Make Change to Workspace and Merge to Study
-    Wait Until Element Is Visible    ${Workspaces}
-    Click Element    ${Workspaces}
-    Sleep    2
-    Wait Until Element Is Visible    ${WorkspaceSearch}
-    Click Element    ${WorkspaceSearch}
-    Sleep    2
+    Wait Until Web Element Is Visible    Study    Workspaces    ${Workspaces}
+    Click Web Element    Study    Workspaces    ${Workspaces}
+    Wait Until Web Element Is Visible    Study    WorkspaceSearch    ${WorkspaceSearch}
+    Click Web Element    Study    WorkspaceSearch    ${WorkspaceSearch}
     Press Keys    None    TAB
     Sleep    2
     Press Keys    None    ENTER
     Sleep    5
-    Wait Until Element Is Visible    ${RootFolders}
-    Click Element    ${RootFolders}
-    Sleep    3
-    Wait Until Element Is Visible    ${Upload}
-    Click Element    ${Upload}
-    Sleep    2
-    Wait Until Element Is Visible    ${UploadFile}
-    Input Text    ${UploadFile}    ${TEST_DATA_DIR}\\raw_dm.sas7bdat
-    Sleep    10
-    Wait Until Element Is Visible    ${Merge}
-    Click Element    ${Merge}
-    Sleep    2
-    Wait Until Element Is Visible    ${SelectForMerge}
-    Click Element    ${SelectForMerge}
-    Sleep    2
+    Wait Until Web Element Is Visible    Workspace    RootFolders    ${RootFolders}
+    Click Web Element    Workspace    RootFolders    ${RootFolders}
+    Wait Until Web Element Is Visible    Workspace    Upload    ${Upload}
+    Click Web Element    Workspace    Upload    ${Upload}
+    Wait Until Web Element Is Visible    Upload    UploadFile    ${UploadFile}
+    Fill Text    Upload    UploadFile    ${UploadFile}    ${TEST_DATA_DIR}\\raw_dm.sas7bdat      10
+    Wait Until Web Element Is Visible    Workspace    Merge    ${Merge}
+    Click Web Element    Workspace    Merge    ${Merge}
+    Wait Until Web Element Is Visible    Workspace    SelectForMerge    ${SelectForMerge}
+    Click Web Element    Workspace    SelectForMerge    ${SelectForMerge}
     Press Keys    None    ARROW_DOWN
     Sleep    2
     Press Keys    None    ENTER
-    Sleep    10
-    Wait Until Element Is Visible    ${SelectAll}
-    Click Element    ${SelectAll}
-    Sleep    3
-    Wait Until Element Is Visible    ${MergeConfirm}
-    Click Element    ${MergeConfirm}
-    Wait Until Element Is Visible    ${MergeSuccess}        timeout=30
-    Sleep    2
-    Wait Until Element Is Visible    ${CloseButton}
-    Click Element    ${CloseButton}
-    Sleep    5
-    Wait Until Element Is Visible    ${Workspaces}
-    Click Element    ${Workspaces}
-    Sleep    2
+#    Sleep    10
+    Wait Until Web Element Is Visible    Workspace    SelectAll    ${SelectAll}
+    Click Web Element    Workspace    SelectAll    ${SelectAll}
+    Wait Until Web Element Is Visible    Workspace    MergeConfirm    ${MergeConfirm}
+    Click Web Element    Workspace    MergeConfirm    ${MergeConfirm}
+    Wait Until Web Element Is Visible    Workspace    MergeSuccess    ${MergeSuccess}
+    Wait Until Web Element Is Visible    Workspace    CloseButton    ${CloseButton}
+    Click Web Element    Workspace    CloseButton    ${CloseButton}
+    Wait Until Web Element Is Visible    Workspace    Workspaces    ${Workspaces}
+    Click Web Element    Workspace    Workspaces    ${Workspaces}
     Press Keys    None    TAB
     Sleep    2
     Press Keys    None    ENTER
     Sleep    5
-    Wait Until Element Is Visible    ${sas7bdat}        timeout=30
+    Wait Until Web Element Is Visible    Study    sas7bdat    ${sas7bdat}
 
 Make Change to Study and Pull to Workspace
-    Wait Until Element Is Visible    ${Upload}
-    Click Element    ${Upload}
-    Sleep    2
-    Wait Until Element Is Visible    ${UploadFile}
-    Input Text    ${UploadFile}    ${TEST_DATA_DIR}\\raw_dm.sas7bdat
-    Sleep    10
-    Wait Until Element Is Visible    ${Workspaces}
-    Click Element    ${Workspaces}
-    Sleep    2
-    Wait Until Element Is Visible    ${WorkspaceSearch}
-    Click Element    ${WorkspaceSearch}
-    Sleep    2
+    Wait Until Web Element Is Visible    Study    Upload    ${Upload}
+    Click Web Element    Study    Upload    ${Upload}
+    Wait Until Web Element Is Visible    Upload    UploadFile    ${UploadFile}
+    Fill Text    Upload    UploadFile    ${UploadFile}    ${TEST_DATA_DIR}\\raw_dm.sas7bdat      10
+    Wait Until Web Element Is Visible    Study    Workspaces    ${Workspaces}
+    Click Web Element    Study    Workspaces    ${Workspaces}
+    Wait Until Web Element Is Visible    Study    WorkspaceSearch    ${WorkspaceSearch}
+    Click Web Element    Study    WorkspaceSearch    ${WorkspaceSearch}
     Press Keys    None    TAB
     Sleep    2
     Press Keys    None    ENTER
     Sleep    5
-    Wait Until Element Is Visible    ${Pull}
-    Click Element    ${Pull}
-    Sleep    3
-    Wait Until Element Is Visible    ${SelectForMerge}
-    Click Element    ${SelectForMerge}
-    Sleep    2
+    Wait Until Web Element Is Visible    Workspace    Pull    ${Pull}
+    Click Web Element    Workspace    Pull    ${Pull}
+    Wait Until Web Element Is Visible    Workspace    SelectForMerge    ${SelectForMerge}
+    Click Web Element    Workspace    SelectForMerge    ${SelectForMerge}
     Press Keys    None    ARROW_DOWN
     Sleep    2
     Press Keys    None    ENTER
-    Sleep    10
-    Wait Until Element Is Visible    ${SelectAll}
-    Click Element    ${SelectAll}
-    Sleep    3
-    Wait Until Element Is Visible    ${MergeConfirm}
-    Click Element    ${MergeConfirm}
-    Wait Until Element Is Visible    ${PullSuccess}        timeout=30
-    Sleep    2
-    Wait Until Element Is Visible    ${CloseButton}
-    Click Element    ${CloseButton}
-    Sleep    5
-    Wait Until Element Is Visible    ${sas7bdat}        timeout=30
+#    Sleep    10
+    Wait Until Web Element Is Visible    Workspace    SelectAll    ${SelectAll}
+    Click Web Element    Workspace    SelectAll    ${SelectAll}
+    Wait Until Web Element Is Visible    Workspace    MergeConfirm    ${MergeConfirm}
+    Click Web Element    Workspace    MergeConfirm    ${MergeConfirm}
+    Wait Until Web Element Is Visible    Workspace    PullSuccess    ${PullSuccess}
+    Wait Until Web Element Is Visible    Workspace    CloseButton    ${CloseButton}
+    Click Web Element    Workspace    CloseButton    ${CloseButton}
+    Wait Until Web Element Is Visible    Study    sas7bdat    ${sas7bdat}
 
 Compute Explicit Dependencies
-    Wait Until Element Is Visible    ${Workspaces}
-    Click Element    ${Workspaces}
-    Sleep    3
-    Wait Until Element Is Visible    ${WorkspaceSearch}
-    Click Element    ${WorkspaceSearch}
-    Sleep    3
+    Wait Until Web Element Is Visible    Study    Workspaces    ${Workspaces}
+    Click Web Element    Study    Workspaces    ${Workspaces}
+    Wait Until Web Element Is Visible    Study    WorkspaceSearch    ${WorkspaceSearch}
+    Click Web Element    Study    WorkspaceSearch    ${WorkspaceSearch}
     Press Keys    None    TAB
-    Sleep    3
+    Sleep    2
     Press Keys    None    ENTER
     Sleep    5
-    Wait Until Element Is Visible    ${RootFolders}
-    Click Element    ${RootFolders}
-    Sleep    3
-    Wait Until Element Is Visible    ${ProgramsFolder}
-    Click Element    ${ProgramsFolder}
-    Sleep    3
-    Wait Until Element Is Visible    ${SasProg}
-    Click Element    ${SasProg}
-    Sleep    5
-    Wait Until Element Is Visible    ${DetectDependencies}
-    Click Element    ${DetectDependencies}
-    Wait Until Element Is Visible    ${DependenciesSuccess}     timeout=30
-    Sleep    3
-    Wait Until Element Is Visible    ${DependenciesCloseButton}
-    Click Element    ${DependenciesCloseButton}
-    Sleep    3
+    Wait Until Web Element Is Visible    Workspace    RootFolders    ${RootFolders}
+    Click Web Element    Workspace    RootFolders    ${RootFolders}
+    Wait Until Web Element Is Visible    Workspace    ProgramsFolder    ${ProgramsFolder}
+    Click Web Element    Workspace    ProgramsFolder    ${ProgramsFolder}
+    Wait Until Web Element Is Visible    Workspace    SasProg    ${SasProg}
+    Click Web Element    Workspace    SasProg    ${SasProg}
+    Wait Until Web Element Is Visible    Workspace    DetectDependencies    ${DetectDependencies}
+    Click Web Element    Workspace    DetectDependencies    ${DetectDependencies}
+    Wait Until Web Element Is Visible    Workspace    DependenciesSuccess    ${DependenciesSuccess}
+    Wait Until Web Element Is Visible    Workspace    DependenciesCloseButton    ${DependenciesCloseButton}
+    Click Web Element    Workspace    DependenciesCloseButton    ${DependenciesCloseButton}
 
 Compute Dependencies
-    Wait Until Element Is Visible    ${Workspaces}
-    Click Element    ${Workspaces}
-    Sleep    3
-    Wait Until Element Is Visible    ${WorkspaceSearch}
-    Click Element    ${WorkspaceSearch}
-    Sleep    3
+    Wait Until Web Element Is Visible    Study    Workspaces    ${Workspaces}
+    Click Web Element    Study    Workspaces    ${Workspaces}
+    Wait Until Web Element Is Visible    Study    WorkspaceSearch    ${WorkspaceSearch}
+    Click Web Element    Study    WorkspaceSearch    ${WorkspaceSearch}
     Press Keys    None    TAB
-    Sleep    3
+    Sleep    2
     Press Keys    None    ENTER
     Sleep    5
-    Wait Until Element Is Visible    ${RootFolders}
-    Click Element    ${RootFolders}
-    Sleep    3
-    Wait Until Element Is Visible    ${ProgramsFolder}
-    Click Element    ${ProgramsFolder}
-    Sleep    3
-    Wait Until Element Is Visible    ${SasProgAlt}
-    Click Element    ${SasProgAlt}
-    Sleep    5
-    Wait Until Element Is Visible    ${DetectDependencies}
-    Click Element    ${DetectDependencies}
-    Wait Until Element Is Visible    ${DependenciesSuccess}     timeout=30
-    Sleep    3
-    Wait Until Element Is Visible    ${DependenciesCloseButton}
-    Click Element    ${DependenciesCloseButton}
-    Sleep    3
+    Wait Until Web Element Is Visible    Workspace    RootFolders    ${RootFolders}
+    Click Web Element    Workspace    RootFolders    ${RootFolders}
+    Wait Until Web Element Is Visible    Workspace    ProgramsFolder    ${ProgramsFolder}
+    Click Web Element    Workspace    ProgramsFolder    ${ProgramsFolder}
+    Wait Until Web Element Is Visible    Workspace    SasProgAlt    ${SasProgAlt}
+    Click Web Element    Workspace    SasProgAlt    ${SasProgAlt}
+    Wait Until Web Element Is Visible    Workspace    DetectDependencies    ${DetectDependencies}
+    Click Web Element    Workspace    DetectDependencies    ${DetectDependencies}
+    Wait Until Web Element Is Visible    Workspace    DependenciesSuccess    ${DependenciesSuccess}
+    Wait Until Web Element Is Visible    Workspace    DependenciesCloseButton    ${DependenciesCloseButton}
+    Click Web Element    Workspace    DependenciesCloseButton    ${DependenciesCloseButton}
 
 Download File and Check
-    Wait Until Element Is Visible    ${Workspaces}
-    Click Element    ${Workspaces}
-    Sleep    3
-    Wait Until Element Is Visible    ${WorkspaceSearch}
-    Click Element    ${WorkspaceSearch}
-    Sleep    3
+    Wait Until Web Element Is Visible    Study    Workspaces    ${Workspaces}
+    Click Web Element    Study    Workspaces    ${Workspaces}
+    Wait Until Web Element Is Visible    Study    WorkspaceSearch    ${WorkspaceSearch}
+    Click Web Element    Study    WorkspaceSearch    ${WorkspaceSearch}
     Press Keys    None    TAB
-    Sleep    3
+    Sleep    2
     Press Keys    None    ENTER
     Sleep    5
-    Wait Until Element Is Visible    ${RootFolders}
-    Click Element    ${RootFolders}
-    Sleep    3
-    Wait Until Element Is Visible    ${ProgramsFolder}
-    Click Element    ${ProgramsFolder}
-    Sleep    3
-    Wait Until Element Is Visible    ${Upload}
-    Click Element    ${Upload}
-    Sleep    3
-    Wait Until Element Is Visible    ${UploadFile}
-    Input Text    ${UploadFile}    ${TEST_DATA_DIR}\\dm_sas7bdat_prog.sas
-    Sleep    15
-    Wait Until Element Is Visible    ${SasProg}
-    Click Element    ${SasProg}
-    Sleep    5
-    Wait Until Element Is Visible    ${DownloadInWorkspace}
-    Click Element    ${DownloadInWorkspace}
-    Sleep    10
+    Wait Until Web Element Is Visible    Workspace    RootFolders    ${RootFolders}
+    Click Web Element    Workspace    RootFolders    ${RootFolders}
+    Wait Until Web Element Is Visible    Workspace    ProgramsFolder    ${ProgramsFolder}
+    Click Web Element    Workspace    ProgramsFolder    ${ProgramsFolder}
+    Wait Until Web Element Is Visible    Workspace    Upload    ${Upload}
+    Click Web Element    Workspace    Upload    ${Upload}
+    Wait Until Web Element Is Visible    Upload    UploadFile    ${UploadFile}
+    Fill Text    Upload    UploadFile    ${UploadFile}    ${TEST_DATA_DIR}\\dm_sas7bdat_prog.sas     15
+    Wait Until Web Element Is Visible    Workspace    SasProg    ${SasProg}
+    Click Web Element    Workspace    SasProg    ${SasProg}
+    Wait Until Web Element Is Visible    Workspace    DownloadInWorkspace    ${DownloadInWorkspace}
+    Click Web Element    Workspace    DownloadInWorkspace    ${DownloadInWorkspace}     10
     ${file_name}=    Set Variable    C:\\Users\\siddh\\Downloads\\dm_sas7bdat_prog.sas
     Run Keyword If   ${{os.path.exists($file_name)}} is False    Fail        File does not exist
 
 Make Change to Special Char File in Workspace and Merge to Study
-    Sleep    3
-    Wait Until Element Is Visible    ${Workspaces}
-    Click Element    ${Workspaces}
-    Sleep    3
-    Wait Until Element Is Visible    ${WorkspaceSearch}
-    Click Element    ${WorkspaceSearch}
-    Sleep    3
+    Wait Until Web Element Is Visible    Study    Workspaces    ${Workspaces}
+    Click Web Element    Study    Workspaces    ${Workspaces}
+    Wait Until Web Element Is Visible    Study    WorkspaceSearch    ${WorkspaceSearch}
+    Click Web Element    Study    WorkspaceSearch    ${WorkspaceSearch}
     Press Keys    None    TAB
-    Sleep    3
+    Sleep    2
     Press Keys    None    ENTER
     Sleep    5
-    Wait Until Element Is Visible    ${RootFolders}
-    Click Element    ${RootFolders}
-    Sleep    3
-    Wait Until Element Is Visible    ${DataFolder}
-    Click Element    ${DataFolder}
-    Sleep    2
-    Wait Until Element Is Visible    ${SpecialCharFileVerify}
-    Wait Until Element Is Visible    ${NewSpecialCharFileVerify}
-    Wait Until Element Is Visible    ${Upload}
-    Click Element    ${Upload}
-    Sleep    3
-    Wait Until Element Is Visible    ${UploadFile}
-    Input Text    ${UploadFile}    ${TEST_DATA_DIR}\\test2Test~ @ # $ % ^ + = { } [ ] ; ,.txt
-    Sleep    10
-    Wait Until Element Is Visible    ${NewSpecialCharFileVerify}
+    Wait Until Web Element Is Visible    Workspace    RootFolders    ${RootFolders}
+    Click Web Element    Workspace    RootFolders    ${RootFolders}
+    Wait Until Web Element Is Visible    Workspace    DataFolder    ${DataFolder}
+    Click Web Element    Workspace    DataFolder    ${DataFolder}
+    Wait Until Web Element Is Visible    Workspace    SpecialCharFileVerify    ${SpecialCharFileVerify}
+    Wait Until Web Element Is Visible    Workspace    NewSpecialCharFileVerify    ${NewSpecialCharFileVerify}
+    Wait Until Web Element Is Visible    Workspace    Upload    ${Upload}
+    Click Web Element    Workspace    Upload    ${Upload}
+    Wait Until Web Element Is Visible    Upload    UploadFile    ${UploadFile}
+    Fill Text    Upload    UploadFile    ${UploadFile}    ${TEST_DATA_DIR}\\test2Test~ @ # $ % ^ + = { } [ ] ; ,.txt     10
+    Wait Until Web Element Is Visible    Workspace    NewSpecialCharFileVerify    ${NewSpecialCharFileVerify}
 #    Click Element    ${NewSpecialCharFileVerify}
 #    Sleep    3
 #    Wait Until Element Is Visible    ${EditButtonInWorkspaceDashboard}
@@ -263,40 +209,31 @@ Make Change to Special Char File in Workspace and Merge to Study
 #    Wait Until Element Is Visible    ${DataFolder}
 #    Click Element    ${DataFolder}
 #    Sleep    2
-    Wait Until Element Is Visible    ${Merge}
-    Click Element    ${Merge}
-    Sleep    2
-    Wait Until Element Is Visible    ${SelectForMerge}
-    Click Element    ${SelectForMerge}
-    Sleep    2
+    Wait Until Web Element Is Visible    Workspace    Merge    ${Merge}
+    Click Web Element    Workspace    Merge    ${Merge}
+    Wait Until Web Element Is Visible    Workspace    SelectForMerge    ${SelectForMerge}
+    Click Web Element    Workspace    SelectForMerge    ${SelectForMerge}
     Press Keys    None    ARROW_DOWN
     Sleep    2
     Press Keys    None    ENTER
     Sleep    10
-    Wait Until Element Is Visible    ${SelectAll}
-    Click Element    ${SelectAll}
-    Sleep    3
-    Wait Until Element Is Visible    ${MergeConfirm}
-    Click Element    ${MergeConfirm}
-    Wait Until Element Is Visible    ${MergeSuccess}        timeout=30
-    Sleep    2
-    Wait Until Element Is Visible    ${CloseButton}
-    Click Element    ${CloseButton}
-    Sleep    5
-    Wait Until Element Is Visible    ${Workspaces}
-    Click Element    ${Workspaces}
-    Sleep    2
+    Wait Until Web Element Is Visible    Workspace    SelectAll    ${SelectAll}
+    Click Web Element    Workspace    SelectAll    ${SelectAll}
+    Wait Until Web Element Is Visible    Workspace    MergeConfirm    ${MergeConfirm}
+    Click Web Element    Workspace    MergeConfirm    ${MergeConfirm}
+    Wait Until Web Element Is Visible    Workspace    MergeSuccess    ${MergeSuccess}
+    Wait Until Web Element Is Visible    Workspace    CloseButton    ${CloseButton}
+    Click Web Element    Workspace    CloseButton    ${CloseButton}
+    Wait Until Web Element Is Visible    Workspace    Workspaces    ${Workspaces}
+    Click Web Element    Workspace    Workspaces    ${Workspaces}
     Press Keys    None    TAB
     Sleep    2
     Press Keys    None    ENTER
     Sleep    5
-    Wait Until Element Is Visible    ${RootFolders}
-    Click Element    ${RootFolders}
-    Sleep    3
-    Wait Until Element Is Visible    ${DataFolder}
-    Click Element    ${DataFolder}
-    Sleep    2
-    Wait Until Element Is Visible    ${NewSpecialCharFileVerify}
-    Click Element    ${NewSpecialCharFileVerify}
-    Sleep    3
-    Wait Until Element Is Visible    ${UpdatedFileVerify}       timeout=30
+    Wait Until Web Element Is Visible    Study    RootFolders    ${RootFolders}
+    Click Web Element    Study    RootFolders    ${RootFolders}
+    Wait Until Web Element Is Visible    Study    DataFolder    ${DataFolder}
+    Click Web Element    Study    DataFolder    ${DataFolder}
+    Wait Until Web Element Is Visible    Study    NewSpecialCharFileVerify    ${NewSpecialCharFileVerify}
+    Click Web Element    Study    NewSpecialCharFileVerify    ${NewSpecialCharFileVerify}
+    Wait Until Web Element Is Visible    Study    UpdatedFileVerify    ${UpdatedFileVerify}       timeout=30

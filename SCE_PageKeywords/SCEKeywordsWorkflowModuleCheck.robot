@@ -11,34 +11,28 @@ Variables  ../SCE_PageLocators/SCELocatorsAppFolders.py
 Variables  ../SCE_PageLocators/SCE_LocatorsDownloads.py
 Variables  ../SCE_PageLocators/SCELocatorsGlobalRoles.py
 Variables  ../SCE_PageLocators/SCELocatorsWorkflowModuleCheck.py
+Resource    ../Libraries/UILib.robot
 
 *** Keywords ***
 Create New Module Check
-    Wait Until Element Is Visible    ${OpenModuleChecks}
-    Click Element    ${OpenModuleChecks}
-    Sleep    3
-    Wait Until Element Is Visible    ${AddNewModule}
-    Click Element    ${AddNewModule}
-    Sleep    3
+    Wait Until Web Element Is Visible    Home    OpenModuleChecks    ${OpenModuleChecks}
+    Click Web Element    Home    OpenModuleChecks    ${OpenModuleChecks}
+    Wait Until Web Element Is Visible    ModuleChecks    AddNewModule    ${AddNewModule}
+    Click Web Element    ModuleChecks    AddNewModule    ${AddNewModule}
     @{list} =    Get Name And Desc      module
     ${ModuleName} =  Set Variable    ${list}[0]
-    Wait Until Element Is Visible    ${InputModuleName}
-    Input Text    ${InputModuleName}    ${ModuleName}
-    Sleep    3
-    Wait Until Element Is Visible    ${InputModuleDescription}
-    Input Text    ${InputModuleDescription}    ${ModuleName}
-    Sleep    3
-    Wait Until Element Is Visible    ${SelectWaiverRole}
-    Click Element    ${SelectWaiverRole}
-    Sleep    3
-    Wait Until Element Is Visible    ${InputWaiverRole}
-    Click Element    ${InputWaiverRole}
-    Sleep    2
-    Input Text    ${InputWaiverRole}    ${WaiverRoleNameArg}\n
-    Sleep    3
-    Wait Until Element Is Visible    ${CreateButton}
-    Click Element    ${CreateButton}
-    Wait Until Element Is Visible    ${ModuleCreatedPrompt}     timeout=30
+    Wait Until Web Element Is Visible    ModuleChecks    InputModuleName    ${InputModuleName}
+    Fill Text    ModuleChecks    InputModuleName    ${InputModuleName}    ${ModuleName}
+    Wait Until Web Element Is Visible    ModuleChecks    InputModuleDescription    ${InputModuleDescription}
+    Fill Text    ModuleChecks    InputModuleDescription    ${InputModuleDescription}    ${ModuleName}
+    Wait Until Web Element Is Visible    ModuleChecks    SelectWaiverRole    ${SelectWaiverRole}
+    Click Web Element    ModuleChecks    SelectWaiverRole    ${SelectWaiverRole}
+    Wait Until Web Element Is Visible    ModuleChecks    InputWaiverRole    ${InputWaiverRole}
+    Click Web Element    ModuleChecks    InputWaiverRole    ${InputWaiverRole}
+    Fill Text    ModuleChecks    InputWaiverRole    ${InputWaiverRole}    ${WaiverRoleNameArg}\n
+    Wait Until Web Element Is Visible    ModuleChecks    CreateButton    ${CreateButton}
+    Click Web Element    ModuleChecks    CreateButton    ${CreateButton}
+    Wait Until Web Element Is Visible    ModuleChecks    ModuleCreatedPrompt    ${ModuleCreatedPrompt}
     Sleep    10
     ${modNewModuleCell}=    Replace String  ${NewModuleCell}  xyz  ${ModuleName}
     Scroll Element Into View    ${modNewModuleCell}

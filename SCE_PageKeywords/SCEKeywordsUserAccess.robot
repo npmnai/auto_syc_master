@@ -13,51 +13,41 @@ Variables  ../SCE_PageLocators/SCELocatorsGlobalRoles.py
 Variables  ../SCE_PageLocators/SCELocatorsWorkflowModuleCheck.py
 Variables  ../SCE_PageLocators/SCELocatorsWorkflow.py
 Variables  ../SCE_PageLocators/SCELocatorsTasks.py
+Resource    ../Libraries/UILib.robot
 
 *** Keywords ***
 Assign User
-    Wait Until Element Is Visible    ${AccessButton}
-    Click Element    ${AccessButton}
-    Wait Until Element Is Visible    ${UserSearchInput}
-    Click Element    ${UserSearchInput}
-    Wait Until Element Is Visible    ${UserSearchInput}
-    Input Text    ${UserSearchInput}    Internal QA
-    Wait Until Element Is Visible    ${FirstUserChoice}
-    Click Element    ${FirstUserChoice}
-    Sleep    2
-    Wait Until Element Is Visible    ${UserSearchClose}
-    Click Element    ${UserSearchClose}
-    Wait Until Element Is Visible    ${RoleSelect}
-    Click Element    ${RoleSelect}
-    Sleep    2
-    Wait Until Element Is Visible    ${RoleInput}
-    Input Text    ${RoleInput}    test\n
-    Sleep    2
-    Wait Until Element Is Visible    ${AssignButton}
-    Click Element    ${AssignButton}
-    Sleep    2
-    Wait Until Element Is Visible    ${AssignYes}
-    Click Element    ${AssignYes}
-    Wait Until Element Is Visible    ${AssignmentConfirm}
-    Sleep    2
+    Wait Until Web Element Is Visible    UserAccess    AccessButton    ${AccessButton}
+    Click Web Element    UserAccess    AccessButton    ${AccessButton}
+    Wait Until Web Element Is Visible    UserAccess    UserSearchInput    ${UserSearchInput}
+    Click Web Element    UserAccess    UserSearchInput    ${UserSearchInput}
+#    Wait Until Web Element Is Visible    UserAccess    UserSearchInput    ${UserSearchInput}
+    Fill Text    UserAccess    UserSearchInput    ${UserSearchInput}    ${UserSearchInputArg}
+    Wait Until Web Element Is Visible    UserAccess    FirstUserChoice    ${FirstUserChoice}
+    Click Web Element    UserAccess    FirstUserChoice    ${FirstUserChoice}
+    Wait Until Web Element Is Visible    UserAccess    UserSearchClose    ${UserSearchClose}
+    Click Web Element    UserAccess    UserSearchClose    ${UserSearchClose}
+    Wait Until Web Element Is Visible    UserAccess    RoleSelect    ${RoleSelect}
+    Click Web Element    UserAccess    RoleSelect    ${RoleSelect}
+    Wait Until Web Element Is Visible    UserAccess    RoleInput    ${RoleInput}
+    Fill Text    UserAccess    RoleInput    ${RoleInput}    ${RoleInputArg}\n
+    Wait Until Web Element Is Visible    UserAccess    AssignButton    ${AssignButton}
+    Click Web Element    UserAccess    AssignButton    ${AssignButton}
+    Wait Until Web Element Is Visible    UserAccess    AssignYes    ${AssignYes}
+    Click Web Element    UserAccess    AssignYes    ${AssignYes}
+    Wait Until Web Element Is Visible    UserAccess    AssignmentConfirm    ${AssignmentConfirm}
 
 Change User Role
-    Wait Until Element Is Visible    ${AccessButton}
-    Click Element    ${AccessButton}
-    Sleep    3
-    Wait Until Element Is Visible    ${CurrentUserRoleSelect}
-    Click Element    ${CurrentUserRoleSelect}
-    Sleep    2
-    Click Element    ${CurrentUserRoleSelect}
-    Sleep    2
-    Wait Until Element Is Visible    ${CurrentUserRoleInput}
-    Input Text    ${CurrentUserRoleInput}    ${GlobalRoleNameArg}\n
-    Sleep    3
-    Wait Until Element Is Visible    ${UpdateRoleButton}
-    Click Element    ${UpdateRoleButton}
-    Sleep    3
-    Wait Until Element Is Visible    ${YesButton}
-    Click Element    ${YesButton}
-    Sleep    3
+    Wait Until Web Element Is Visible    UserAccess    AccessButton    ${AccessButton}
+    Click Web Element    UserAccess    AccessButton    ${AccessButton}
+    Wait Until Web Element Is Visible    UserAccess    CurrentUserRoleSelect    ${CurrentUserRoleSelect}
+    Click Web Element    UserAccess    CurrentUserRoleSelect    ${CurrentUserRoleSelect}
+    Click Web Element    UserAccess    CurrentUserRoleSelect    ${CurrentUserRoleSelect}
+    Wait Until Web Element Is Visible    UserAccess    CurrentUserRoleInput    ${CurrentUserRoleInput}
+    Fill Text    UserAccess    CurrentUserRoleInput    ${CurrentUserRoleInput}    ${GlobalRoleNameArg}\n
+    Wait Until Web Element Is Visible    UserAccess    UpdateRoleButton    ${UpdateRoleButton}
+    Click Web Element    UserAccess    UpdateRoleButton    ${UpdateRoleButton}
+    Wait Until Web Element Is Visible    UserAccess    YesButton    ${YesButton}
+    Click Web Element    UserAccess    YesButton    ${YesButton}
     ${modRoleUpdatedVerify}=    Replace String  ${RoleUpdatedVerify}  xyz  ${GlobalRoleNameArg}
-    Wait Until Element Is Visible    ${modRoleUpdatedVerify}       timeout=30
+    Wait Until Web Element Is Visible    UserAccess    modRoleUpdatedVerify    ${modRoleUpdatedVerify}

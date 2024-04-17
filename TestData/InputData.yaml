@@ -5,3 +5,5 @@ GlobalRoleNameArg: auto
 StorageNameArg: Data Server Storage
 FolderTypeArg: documents
 PermissionTypeArg: Blinded
+UserSearchInputArg: Internal QA
+RoleInputArg: test
