@@ -10,14 +10,14 @@ Variables  ../SCE_PageLocators/SCELocatorsSteps.py
 *** Keywords ***
 Create A Step With Type Single
     Navigate to Manage Steps
-    Click Element    ${AddNewWorkflowStep}
+    Click Web Element    Manage    AddNewWorkflowStep    ${AddNewWorkflowStep}
     Sleep   5
 
     @{list}=    Get Name And Desc    step_single
     Log    Step Name=${list}[0]
-    Input Text    ${StepName}    ${list}[0]
+    Fill Text    AddWorkflowStep    StepName    ${StepName}    ${list}[0]
     Log    Step Desc=${list}[1]
-    Input Text    ${StepDescription}    ${list}[1]
+    Fill Text    AddWorkflowStep    StepDescription    ${StepDescription}    ${list}[1]
     Sleep   10
 
     CheckTestDataFile    Sample1.csv
@@ -37,9 +37,9 @@ Create A Step With Type Single
     ${roles_cnt}=    Get length    ${roles}
     Log To Console     roles_cnt=${roles_cnt}
 
-    Click Element    ${MainTrackDropdown}
-    Sleep   2
-    Input Text    ${StepTypeTextSearch}    ${roles}[0]
+    Click Web Element    AddWorkflowStep    MainTrackDropdown    ${MainTrackDropdown}
+#    Sleep   2
+    Fill Text    AddWorkflowStep    StepTypeTextSearch    ${StepTypeTextSearch}    ${roles}[0]
     Press Keys   ${StepTypeTextSearch}   ENTER
     Capture Page Screenshot
     Sleep   10
@@ -49,11 +49,11 @@ Create A Step With Type Single
             ${index_str}=    Convert To String    ${index}
             ${mod_xpath}=  Replace String  ${MainTrackDropdownAdd}  index  ${index_str}
 
-            Click Element    ${AddAnotherRole}
-            Sleep   2
-            Click Element    ${mod_xpath}
-            Sleep   2
-            Input Text    ${StepTypeTextSearch}    ${roles}[${index}]
+            Click Web Element    AddWorkflowStep    AddAnotherRole    ${AddAnotherRole}
+#            Sleep   2
+            Click Web Element    AddWorkflowStep    mod_xpath    ${mod_xpath}
+#            Sleep   2
+            Fill Text    AddWorkflowStep    StepTypeTextSearch    ${StepTypeTextSearch}    ${roles}[${index}]
             Press Keys   ${StepTypeTextSearch}   ENTER
             Capture Page Screenshot
             Sleep   10
@@ -67,9 +67,9 @@ Create A Step With Type Single
     Log To Console     premod_cnt=${premod_cnt}
 
     Scroll Element Into View    ${PreProcModDropdown}
-    Click Element    ${PreProcModDropdown}
-    Sleep   2
-    Input Text    ${StepTypeTextSearch}    ${premod}[0]
+    Click Web Element    AddWorkflowStep    PreProcModDropdown    ${PreProcModDropdown}
+#    Sleep   2
+    Fill Text    AddWorkflowStep    StepTypeTextSearch    ${StepTypeTextSearch}    ${premod}[0]
     Press Keys   ${StepTypeTextSearch}   ENTER
     Capture Page Screenshot
     Sleep   10
@@ -81,14 +81,14 @@ Create A Step With Type Single
     Log To Console     postmod_cnt=${postmod_cnt}
 
     Scroll Element Into View    ${PostProcModDropdown}
-    Click Element    ${PostProcModDropdown}
-    Sleep   2
-    Input Text    ${StepTypeTextSearch}    ${postmod}[0]
+    Click Web Element    AddWorkflowStep    PostProcModDropdown    ${PostProcModDropdown}
+#    Sleep   2
+    Fill Text    AddWorkflowStep    StepTypeTextSearch    ${StepTypeTextSearch}    ${postmod}[0]
     Press Keys   ${StepTypeTextSearch}   ENTER
     Capture Page Screenshot
     Sleep   5
 
-    Click Element    ${CreateButton}
+    Click Web Element    AddWorkflowStep    CreateButton    ${CreateButton}
     Sleep   5
     Capture Page Screenshot
 

@@ -2,14 +2,15 @@
 Library  SeleniumLibrary
 Variables  ../SCE_PageLocators/SCELocatorsLogin.py
 Variables  ../SCE_PageLocators/SCELocatorsDashboard.py
+Resource    ../Libraries/UILib.robot
 
 *** Keywords ***
 Launch SCE Application
     Open Browser    ${AppURL}    Chrome
     Maximize Browser Window
-    Sleep    2
-    Wait Until Element Is Visible    ${SignInEmailTextField}
-    Sleep    2
+#    Sleep    2
+    Wait Until Web Element Is Visible    Login    SignInEmailTextField    ${SignInEmailTextField}
+#    Sleep    2
     #Click Element    xpath=//div[@id="flash"]/i
     #Sleep    5
 
@@ -18,34 +19,34 @@ Launch SCE Application SSO Login
     Open Browser    ${AppURL}    Chrome    alias=ch
     Maximize Browser Window
     Sleep    2
-    Input Text    xpath=//input[@type='email']    Email
-    Click Element   xpath=//span[contains(text(),'Next')]
-    Sleep    2
-    Input Text    xpath=//input[@type='password']    Password
-    Click Element   xpath=//span[contains(text(),'Next')]
-    Sleep    2
-    Wait Until Element Is Visible    ${SignInEmailTextField}
-    Sleep    2
-    Click Element    xpath=//div[@id="flash"]/i
+    Fill Text    Login    EmailInput    xpath=//input[@type='email']    Email
+    Click Web Element   Login    Next    xpath=//span[contains(text(),'Next')]
+#    Sleep    2
+    Fill Text    Login    PasswordInput    xpath=//input[@type='password']    Password
+    Click Web Element   Login    Next    xpath=//span[contains(text(),'Next')]
+#    Sleep    2
+    Wait Until Web Element Is Visible    Login    SignInEmailTextField    ${SignInEmailTextField}
+#    Sleep    2
+    Click Web Element    Login    Login    xpath=//div[@id="flash"]/i
     Sleep    5
 
 Login to SCE Application
-    Input Text    ${SignInEmailTextField}    ${Email}
-    Sleep    2
-    Input Password     ${SignInPasswordTextField}     ${Password}
-    Sleep    2
+    Fill Text    Login    SignInEmailTextField    ${SignInEmailTextField}    ${Email}
+#    Sleep    2
+    Fill Password     Login    SignInPasswordTextField    ${SignInPasswordTextField}     ${Password}
+#    Sleep    2
     #Scroll Element Into View    ${SignInButton}
-    Click Button   ${SignInButton}
-    Wait Until Element Is Visible    ${SCELogo}    10
-    Click Element    ${SCELogo}
-    Sleep    2
+    Click The Button   Login    SignInButton    ${SignInButton}
+    Wait Until Web Element Is Visible    Home    SCELogo    ${SCELogo}
+    Click Web Element    Home    SCELogo    ${SCELogo}
+#    Sleep    2
 
 Logout of SCE Application
-    Click Element    ${UserOptions}
+    Click Web Element    Home    UserOptions    ${UserOptions}
     Sleep    5
-    Click Link    ${LogoutLink}
+    Click Web Link    Home    LogoutLink    ${LogoutLink}
     Sleep    5
-    Wait Until Element Is Visible    ${SignInButton}    10
+    Wait Until Web Element Is Visible    Login    SignInButton    ${SignInButton}
 
 Open Browser Profiled
    ${options}=    Evaluate    sys.modules['selenium.webdriver'].ChromeOptions()    sys, selenium.webdriver
